@@ -11,7 +11,7 @@
 				<div class="items-cart-inner">
 				  <div class="basket"> <i class="fal fa-shopping-cart"></i> </div>
 				  <div class="basket-item-count"><span class="cart-count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'medibazar'), $woocommerce->cart->cart_contents_count);?></span></div>
-				  <div class="total-price-basket"> <span class="lbl"><?php esc_html_e('My Cart','medibazar'); ?></span>  </div>
+				  <div class="total-price-basket"> <span class="lbl"><?php esc_html_e('Zum Warenkorb','medibazar'); ?></span>  </div>
 				</div>
 				</a>
 				<div class="dropdown-menu">

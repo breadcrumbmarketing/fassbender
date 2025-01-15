@@ -666,7 +666,7 @@ msgid "Search"
 msgstr ""
 
 #: ../includes/header/cart.php:14
-msgid "My Cart"
+msgid "Zum Warenkorb"
 msgstr ""
 
 #: ../includes/merlin/class-merlin.php:454

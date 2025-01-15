@@ -54649,7 +54649,7 @@ msgstr[1] ""
 #: assets/client/blocks/mini-cart-contents-block/cart-button-frontend.js:1
 #: assets/client/blocks/mini-cart-contents-block/footer-frontend.js:1
 #: assets/client/blocks/mini-cart-contents.js:13
-msgid "View my cart"
+msgid "View Zum Warenkorb"
 msgstr ""
 
 #: assets/client/blocks/mini-cart-contents-block/checkout-button-frontend.js:1
