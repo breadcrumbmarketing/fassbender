@@ -28,6 +28,4 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Ignore Composer files if using Composer
-vendor/
-composer.lock
+
