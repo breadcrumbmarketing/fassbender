@@ -37,3 +37,17 @@ function medibazar_child_theme_setup() {
     load_child_theme_textdomain('medibazar', get_stylesheet_directory() . '/languages');
 }
 add_action('after_setup_theme', 'medibazar_child_theme_setup');
+
+// filter sort by in germna 
+
+add_filter('woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby');
+function custom_woocommerce_catalog_orderby($orderby) {
+    $orderby = array(
+        'popularity' => __( 'Sort by most popular', 'woocommerce' ),
+        'rating'     => __( 'Sort by top rated', 'woocommerce' ),
+        'date'       => __( 'Sort by newest', 'woocommerce' ),
+        'price'      => __( 'Sort by price: lowest first', 'woocommerce' ),
+        'price-desc' => __( 'Sort by price: highest first', 'woocommerce' ),
+    );
+    return $orderby;
+}
