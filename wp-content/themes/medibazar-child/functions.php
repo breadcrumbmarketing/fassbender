@@ -110,6 +110,14 @@ function custom_german_translations($translated_text, $text, $domain) {
             case 'Total':
                 $translated_text = __('Gesamtsumme', $domain);
                 break;
+            case 'Product':
+                $translated_text = __('Produkt', $domain);
+                break;
+            case 'Price':
+                $translated_text = __('Preis', $domain);
+                break;
+                
+                
             // Add more translations as needed
         }
     }
