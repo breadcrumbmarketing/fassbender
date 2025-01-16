@@ -39,15 +39,14 @@ function medibazar_child_theme_setup() {
 add_action('after_setup_theme', 'medibazar_child_theme_setup');
 
 // filter sort by in germna 
-
-add_filter('woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby');
-function custom_woocommerce_catalog_orderby($orderby) {
+add_filter('woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby_german');
+function custom_woocommerce_catalog_orderby_german($orderby) {
     $orderby = array(
-        'popularity' => __( 'Sort by most popular', 'woocommerce' ),
-        'rating'     => __( 'Sort by top rated', 'woocommerce' ),
-        'date'       => __( 'Sort by newest', 'woocommerce' ),
-        'price'      => __( 'Sort by price: lowest first', 'woocommerce' ),
-        'price-desc' => __( 'Sort by price: highest first', 'woocommerce' ),
+        'popularity' => __( 'Nach Beliebtheit sortieren', 'woocommerce' ),
+        'rating'     => __( 'Nach Durchschnittsbewertung sortieren', 'woocommerce' ),
+        'date'       => __( 'Nach Neuheit sortieren', 'woocommerce' ),
+        'price'      => __( 'Nach Preis: niedrig zu hoch', 'woocommerce' ),
+        'price-desc' => __( 'Nach Preis: hoch zu niedrig', 'woocommerce' ),
     );
     return $orderby;
 }
