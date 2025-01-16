@@ -55,6 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
         'Continue shopping': 'Einkaufen fortsetzen',
         'Discount': 'Rabatt',
         'Free': 'Kostenlos',
+        'Your order': 'Ihre Bestellung',
+        'Checkout': 'Zur Kasse',
+        'Related products': 'Ähnliche Produkte',
+        'Share Now': 'etzt teilen',
+        
+
+
+        
         // Add more translations as needed
     };
 
