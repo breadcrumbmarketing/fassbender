@@ -50,3 +50,69 @@ function custom_woocommerce_catalog_orderby_german($orderby) {
     );
     return $orderby;
 }
+
+// Translate woocommerce 
+
+add_filter('gettext', 'custom_german_translations', 20, 3);
+function custom_german_translations($translated_text, $text, $domain) {
+    // Apply translations for specific text domains
+    if ($domain === 'woocommerce' || $domain === 'https://testshop.autoactiva-intern.de/') {
+        switch ($text) {
+            // WooCommerce strings
+            case 'Description':
+                $translated_text = __('Beschreibung', 'woocommerce');
+                break;
+            case 'Reviews':
+                $translated_text = __('Bewertungen', 'woocommerce');
+                break;
+            case 'In stock':
+                $translated_text = __('Auf Lager', $domain);
+                break;
+            case 'Add to Wishlist':
+                $translated_text = __('Zur Wunschliste hinzufügen', $domain);
+                break;
+            case 'Related products':
+                $translated_text = __('Ähnliche Produkte', $domain);
+                break;
+            case 'Add to cart':
+                $translated_text = __('In den Warenkorb legen', $domain);
+                break;
+            case 'View cart':
+                $translated_text = __('Warenkorb ansehen', $domain);
+                break;
+            case 'Proceed to checkout':
+                $translated_text = __('Zur Kasse gehen', $domain);
+                break;
+            case 'Billing details':
+                $translated_text = __('Rechnungsdetails', $domain);
+                break;
+            case 'Additional information':
+                $translated_text = __('Zusätzliche Informationen', $domain);
+                break;
+            case 'Your order':
+                $translated_text = __('Ihre Bestellung', $domain);
+                break;
+            case 'Apply coupon':
+                $translated_text = __('Gutschein einlösen', $domain);
+                break;
+            case 'Update cart':
+                $translated_text = __('Warenkorb aktualisieren', $domain);
+                break;
+            case 'Cart totals':
+                $translated_text = __('Warenkorb Summe', $domain);
+                break;
+            case 'Subtotal':
+                $translated_text = __('Zwischensumme', $domain);
+                break;
+            case 'Shipping':
+                $translated_text = __('Versand', $domain);
+                break;
+            case 'Total':
+                $translated_text = __('Gesamtsumme', $domain);
+                break;
+            // Add more translations as needed
+        }
+    }
+    return $translated_text;
+}
+
