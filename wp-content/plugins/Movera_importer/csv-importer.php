@@ -119,32 +119,6 @@ function handle_csv_import() {
 
 // ---------- Product Automation -------------- //
 
-add_action('admin_menu', 'csv_importer_add_admin_menu');
-
-function csv_importer_add_admin_menu() {
-    add_submenu_page(
-        'csv_importer',
-        'Create Products',
-        'Create Products',
-        'manage_options',
-        'create_products',
-        'csv_importer_create_products_page'
-    );
-}
-
-function csv_importer_create_products_page() {
-    ?>
-    <h2>Create Products in WooCommerce</h2>
-    <form method="post" action="">
-        <input type="hidden" name="action" value="create_products">
-        <input type="submit" value="Create Products">
-    </form>
-    <?php
-    if ($_POST['action'] == 'create_products') {
-        require_once(plugin_dir_path(__FILE__) . 'create-products.php');
-        create_woocommerce_products_from_db();
-    }
-}
 
 
 
