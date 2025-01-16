@@ -6,12 +6,12 @@
 * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
 *
 * @package WordPress
-* @subpackage Fassbender
+* @subpackage medibazar
 * @since 1.0.0
 */
 
-	remove_action( 'Fassbender_main_header', 'Fassbender_main_header_function', 10 );
-	remove_action( 'Fassbender_main_footer', 'Fassbender_main_footer_function', 10 );
+	remove_action( 'medibazar_main_header', 'medibazar_main_header_function', 10 );
+	remove_action( 'medibazar_main_footer', 'medibazar_main_footer_function', 10 );
 
 
     get_header();

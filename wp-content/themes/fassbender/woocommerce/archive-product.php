@@ -17,12 +17,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! Fassbender_is_pjax() ) {
+if ( ! medibazar_is_pjax() ) {
     get_header( 'shop' );
 }
 ?>
 
-<?php $breadcrumb = get_theme_mod('Fassbender_shop_breadcrumb','0'); ?>
+<?php $breadcrumb = get_theme_mod('medibazar_shop_breadcrumb','0'); ?>
 <?php if($breadcrumb == '1'){ ?>
 	<div class="klb-shop-breadcrumb breadcrumb-area pt-125 pb-125">
 		<div class="container">
@@ -39,19 +39,19 @@ if ( ! Fassbender_is_pjax() ) {
 					<div class="row">
 						<div class="col-xl-12">
 							<div class="breadcrumb-text">
-								<h2><?php printf( esc_html__( 'Search Results for: %s', 'Fassbender' ), get_search_query() ); ?></h2>
+								<h2><?php printf( esc_html__( 'Search Results for: %s', 'medibazar' ), get_search_query() ); ?></h2>
 							</div>
 						</div>
 					</div>
 				<?php } else { ?>
 					<div class="row">
 						<div class="col-xl-12">
-							<?php $breadcrumb_title = get_theme_mod('Fassbender_breadcrumb_title'); ?>
+							<?php $breadcrumb_title = get_theme_mod('medibazar_breadcrumb_title'); ?>
 							<div class="breadcrumb-text">
 								<?php if($breadcrumb_title){ ?>
 									<h2><?php echo esc_html($breadcrumb_title); ?></h2>
 								<?php } else { ?>
-									<h2><?php echo esc_html_e('Products','Fassbender'); ?></h2>
+									<h2><?php echo esc_html_e('Products','medibazar'); ?></h2>
 								<?php } ?>
 							</div>
 						</div>
@@ -71,9 +71,9 @@ if ( ! Fassbender_is_pjax() ) {
 	<div class="container">
 		<div class="row">
 			
-			<?php Fassbender_do_action( 'Fassbender_before_main_shop'); ?>
+			<?php medibazar_do_action( 'medibazar_before_main_shop'); ?>
 
-			<?php if( get_theme_mod( 'Fassbender_shop_layout' ) == 'full-width' || Fassbender_get_option() == 'full-width') { ?>
+			<?php if( get_theme_mod( 'medibazar_shop_layout' ) == 'full-width' || medibazar_get_option() == 'full-width') { ?>
 				<div class="col-xl-12 col-lg-12">
 					<div class="pro-ful-tab">
 						<?php do_action( 'woocommerce_before_main_content' ); ?>
@@ -111,7 +111,7 @@ if ( ! Fassbender_is_pjax() ) {
 						?>
 					</div>
 				</div>
-			<?php } elseif( get_theme_mod( 'Fassbender_shop_layout' ) == 'right-sidebar' || Fassbender_get_option() == 'right-sidebar') { ?>
+			<?php } elseif( get_theme_mod( 'medibazar_shop_layout' ) == 'right-sidebar' || medibazar_get_option() == 'right-sidebar') { ?>
 				<div class="col-xl-9 col-lg-9">
 					<div class="pro-ful-tab">
 						<?php do_action( 'woocommerce_before_main_content' ); ?>
@@ -240,13 +240,13 @@ if ( ! Fassbender_is_pjax() ) {
 			<?php } ?>
 			
 
-			<?php Fassbender_do_action( 'Fassbender_after_main_shop'); ?>
+			<?php medibazar_do_action( 'medibazar_after_main_shop'); ?>
 			
 		</div>
 	</div>
 </div>
 
 <?php
-if ( ! Fassbender_is_pjax() ) {
+if ( ! medibazar_is_pjax() ) {
 	get_footer( 'shop' );
 }

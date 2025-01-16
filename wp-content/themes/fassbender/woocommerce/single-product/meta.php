@@ -27,13 +27,13 @@ global $product;
 
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
-		<span class="sku_wrapper"><span class="meta-title"><?php esc_html_e( 'SKU:', 'Fassbender' ); ?></span> <span class="sku"><?php echo ( Fassbender_sanitize_data($sku = $product->get_sku()) ) ? $sku : esc_html__( 'N/A', 'Fassbender' ); ?></span></span>
+		<span class="sku_wrapper"><span class="meta-title"><?php esc_html_e( 'SKU:', 'medibazar' ); ?></span> <span class="sku"><?php echo ( medibazar_sanitize_data($sku = $product->get_sku()) ) ? $sku : esc_html__( 'N/A', 'medibazar' ); ?></span></span>
 
 	<?php endif; ?>
 
-	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', '<span class="meta-title">Categories:</span>', count( $product->get_category_ids() ), 'Fassbender' ) . ' ', '</span>' ); ?>
+	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', '<span class="meta-title">Categories:</span>', count( $product->get_category_ids() ), 'medibazar' ) . ' ', '</span>' ); ?>
 
-	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', '<span class="meta-title">Tags:</span>', count( $product->get_tag_ids() ), 'Fassbender' ) . ' ', '</span>' ); ?>
+	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', '<span class="meta-title">Tags:</span>', count( $product->get_tag_ids() ), 'medibazar' ) . ' ', '</span>' ); ?>
 
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
 

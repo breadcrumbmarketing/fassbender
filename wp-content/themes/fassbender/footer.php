@@ -2,26 +2,26 @@
 /**
  * footer.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.0
+ * @subpackage medibazar
+ * @since medibazar 1.0
  * 
  */
  ?>
-	<?php Fassbender_do_action( 'Fassbender_before_main_footer'); ?>
+	<?php medibazar_do_action( 'medibazar_before_main_footer'); ?>
 	
 	<?php if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'footer' ) ) { ?>
 		<?php
         /**
-        * Hook: Fassbender_main_footer
+        * Hook: medibazar_main_footer
         *
-        * @hooked Fassbender_main_footer_function - 10
+        * @hooked medibazar_main_footer_function - 10
         */
-        do_action( 'Fassbender_main_footer' );
+        do_action( 'medibazar_main_footer' );
 	
 		?>
 	<?php } ?>
 	
-	<?php Fassbender_do_action( 'Fassbender_after_main_footer'); ?>
+	<?php medibazar_do_action( 'medibazar_after_main_footer'); ?>
 
 	<?php wp_footer(); ?>
     </body>

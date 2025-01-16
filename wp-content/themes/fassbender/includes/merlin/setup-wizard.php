@@ -9,7 +9,7 @@ require_once get_parent_theme_file_path( '/includes/merlin/merlin-config.php' );
 /************************************************************
 ## Setup Wizard Local Import
 *************************************************************/
-function Fassbender_local_import_files() {
+function medibazar_local_import_files() {
 	return array(
 		array(
 			'import_file_name'             	=> 'Import Demo',
@@ -20,12 +20,12 @@ function Fassbender_local_import_files() {
 		
 	);
 }
-add_filter( 'merlin_import_files', 'Fassbender_local_import_files' );
+add_filter( 'merlin_import_files', 'medibazar_local_import_files' );
 
 /************************************************************
 ## Setup Wizard After Import
 *************************************************************/
-function Fassbender_merlin_after_import_setup() {
+function medibazar_merlin_after_import_setup() {
 	// Assign menus to their locations.
 	$main_menu 	  = get_term_by( 'name', 'Menu 1', 'nav_menu' );
 	$toprightmenu = get_term_by( 'name', 'Top Right', 'nav_menu' );
@@ -59,7 +59,7 @@ function Fassbender_merlin_after_import_setup() {
     }
 
 }
-add_action( 'merlin_after_all_import', 'Fassbender_merlin_after_import_setup' );
+add_action( 'merlin_after_all_import', 'medibazar_merlin_after_import_setup' );
 
 add_filter( 'woocommerce_prevent_automatic_wizard_redirect', '__return_true' );
 

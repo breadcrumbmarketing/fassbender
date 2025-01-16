@@ -1,7 +1,7 @@
 (function ($) {
   "use strict";
 
-	$(document).on('FassbenderShopPageInit', function () {
+	$(document).on('medibazarShopPageInit', function () {
 		if ($("body").hasClass("toggled")) {
 			$('body').removeClass('toggled');
 		}

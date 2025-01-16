@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 	return;
 }
 
-$image_column = get_theme_mod('Fassbender_shop_single_image_column',6);
+$image_column = get_theme_mod('medibazar_shop_single_image_column',6);
 $content_column = (12-$image_column);
 
 ?>

@@ -22,11 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="row mb-20">
 	<div class="col-xl-6 col-lg-6 col-md-6 col-3">
-		<?php if(get_theme_mod('Fassbender_grid_list_view','0') == '1'){ ?>
+		<?php if(get_theme_mod('medibazar_grid_list_view','0') == '1'){ ?>
 
 			<div class="product-02-tab mb-20">
 				<ul class="nav justify-content-start product-nav klbgridlist">
-					<?php if(Fassbender_shop_view() == 'list_view') { ?>
+					<?php if(medibazar_shop_view() == 'list_view') { ?>
 						<li class="nav-item">
 							<a href="<?php echo esc_url(add_query_arg('shop_view','grid_view')); ?>" class="button-grid nav-link">
 								<input type="hidden" value="grid_view">
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</li>
 					<?php } ?>
 					<?php if(is_shop()){ ?>
-						<?php wp_enqueue_script( 'Fassbender-filter-toggle'); ?>
+						<?php wp_enqueue_script( 'medibazar-filter-toggle'); ?>
 						<li class="klb-mobile-filter nav-item">
 							<a class="nav-link button-filter active" data-toggle="offcanvas" href="#">
 								<input type="hidden" value="grid_view">
@@ -70,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="col-xl-6 col-lg-6 col-md-6 col-9">
 		<div class="pro-filter mb-20 f-right">
 			<form class="woocommerce-ordering" method="get">
-				<select name="orderby" class="orderby" aria-label="<?php esc_attr_e( 'Shop order', 'Fassbender' ); ?>">
+				<select name="orderby" class="orderby" aria-label="<?php esc_attr_e( 'Shop order', 'medibazar' ); ?>">
 					<?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
 						<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
 					<?php endforeach; ?>
@@ -81,6 +81,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	</div>
 	<div class="col-md-12">
-		<?php echo Fassbender_remove_klb_filter(); ?>
+		<?php echo medibazar_remove_klb_filter(); ?>
 	</div>
 </div>

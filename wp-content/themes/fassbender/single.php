@@ -2,8 +2,8 @@
 /**
  * sinle.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.0
+ * @subpackage medibazar
+ * @since medibazar 1.0
  * 
  */
  ?>
@@ -14,7 +14,7 @@
 	<div class="blog-area pt-105 pb-70">
 		<div class="container">
 			<div class="row">
-				<?php if( get_theme_mod( 'Fassbender_blog_layout' ) == 'right-sidebar') { ?>
+				<?php if( get_theme_mod( 'medibazar_blog_layout' ) == 'right-sidebar') { ?>
 					<div class="col-xl-8 col-lg-8 mb-30">
 						<div class="blog-standard">
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -27,7 +27,7 @@
 								
 							<?php else : ?>
 
-								<h2><?php esc_html_e('No Posts Found', 'Fassbender') ?></h2>
+								<h2><?php esc_html_e('No Posts Found', 'medibazar') ?></h2>
 
 							<?php endif; ?>
 						</div>
@@ -37,7 +37,7 @@
 							<?php dynamic_sidebar( 'blog-sidebar' ); ?>
 						<?php } ?>
 					</div>
-				<?php } elseif( get_theme_mod( 'Fassbender_blog_layout' ) == 'full-width') { ?>
+				<?php } elseif( get_theme_mod( 'medibazar_blog_layout' ) == 'full-width') { ?>
 					<div class="col-lg-10 mb-30 offset-lg-1">
 						<div class="blog-standard">
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -50,7 +50,7 @@
 								
 							<?php else : ?>
 
-								<h2><?php esc_html_e('No Posts Found', 'Fassbender') ?></h2>
+								<h2><?php esc_html_e('No Posts Found', 'medibazar') ?></h2>
 
 							<?php endif; ?>
 						</div>
@@ -74,7 +74,7 @@
 									
 								<?php else : ?>
 
-									<h2><?php esc_html_e('No Posts Found', 'Fassbender') ?></h2>
+									<h2><?php esc_html_e('No Posts Found', 'medibazar') ?></h2>
 
 								<?php endif; ?>
 							</div>
@@ -92,7 +92,7 @@
 									
 								<?php else : ?>
 
-									<h2><?php esc_html_e('No Posts Found', 'Fassbender') ?></h2>
+									<h2><?php esc_html_e('No Posts Found', 'medibazar') ?></h2>
 
 								<?php endif; ?>
 							</div>

@@ -3,8 +3,8 @@
 /**
  * page.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.0
+ * @subpackage medibazar
+ * @since medibazar 1.0
  */
 ?>
 
@@ -15,14 +15,14 @@
 	<?php if ( class_exists( 'woocommerce' ) ) { ?>
 
 		<?php if (is_cart()) { ?>
-			<?php $breadcrumb = get_theme_mod('Fassbender_shop_breadcrumb','0'); ?>
+			<?php $breadcrumb = get_theme_mod('medibazar_shop_breadcrumb','0'); ?>
 			<?php if($breadcrumb == '1'){ ?>
 				<div class="klb-shop-breadcrumb breadcrumb-area pt-125 pb-125">
 					<div class="container">
 						<div class="klb-breadcrumb-wrapper">
 							<div class="row">
 								<div class="col-xl-12">
-									<?php $breadcrumb_title = get_theme_mod('Fassbender_breadcrumb_title'); ?>
+									<?php $breadcrumb_title = get_theme_mod('medibazar_breadcrumb_title'); ?>
 									<div class="breadcrumb-text">
 										<h2><?php the_title(); ?></h2>
 									</div>
@@ -42,7 +42,7 @@
 						<div class="col-12">
 							<?php while(have_posts()) : the_post(); ?>
 								<?php the_content (); ?>
-								<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+								<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 							<?php endwhile; ?>
 						</div>
 					</div>
@@ -50,14 +50,14 @@
 			</section>
 
 		<?php } elseif (is_checkout()) { ?>
-			<?php $breadcrumb = get_theme_mod('Fassbender_shop_breadcrumb','0'); ?>
+			<?php $breadcrumb = get_theme_mod('medibazar_shop_breadcrumb','0'); ?>
 			<?php if($breadcrumb == '1'){ ?>
 				<div class="klb-shop-breadcrumb breadcrumb-area pt-125 pb-125">
 					<div class="container">
 						<div class="klb-breadcrumb-wrapper">
 							<div class="row">
 								<div class="col-xl-12">
-									<?php $breadcrumb_title = get_theme_mod('Fassbender_breadcrumb_title'); ?>
+									<?php $breadcrumb_title = get_theme_mod('medibazar_breadcrumb_title'); ?>
 									<div class="breadcrumb-text">
 										<h2><?php the_title(); ?></h2>
 									</div>
@@ -75,19 +75,19 @@
 				<div class="container">
 					<?php while(have_posts()) : the_post(); ?>
 						<?php the_content (); ?>
-						<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+						<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 					<?php endwhile; ?>
 				</div>
 			</section>
 	   <?php } elseif (is_account_page()) { ?>
-			<?php $breadcrumb = get_theme_mod('Fassbender_shop_breadcrumb','0'); ?>
+			<?php $breadcrumb = get_theme_mod('medibazar_shop_breadcrumb','0'); ?>
 			<?php if($breadcrumb == '1'){ ?>
 				<div class="klb-shop-breadcrumb breadcrumb-area pt-125 pb-125">
 					<div class="container">
 						<div class="klb-breadcrumb-wrapper">
 							<div class="row">
 								<div class="col-xl-12">
-									<?php $breadcrumb_title = get_theme_mod('Fassbender_breadcrumb_title'); ?>
+									<?php $breadcrumb_title = get_theme_mod('medibazar_breadcrumb_title'); ?>
 									<div class="breadcrumb-text">
 										<h2><?php the_title(); ?></h2>
 									</div>
@@ -107,7 +107,7 @@
 						<div class="col-md-12">
 							<?php while(have_posts()) : the_post(); ?>
 								<?php the_content (); ?>
-								<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+								<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 							<?php endwhile; ?>
 						</div>
 					</div>
@@ -117,7 +117,7 @@
 		  
 			<?php while(have_posts()) : the_post(); ?>
 				<?php the_content (); ?>
-				<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+				<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 			<?php endwhile; ?>
 			
 		<?php } else { ?>
@@ -130,7 +130,7 @@
 								<h1 class="klb-page-title"><?php the_title(); ?></h1>
 								<div class="klb-post">
 									<?php the_content (); ?>
-									<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+									<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 								</div>
 							<?php endwhile; ?>
 							<?php comments_template(); ?>
@@ -145,7 +145,7 @@
 		  
 			<?php while(have_posts()) : the_post(); ?>
 				<?php the_content (); ?>
-				<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+				<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 			<?php endwhile; ?>
 			
 		<?php } else { ?>
@@ -158,7 +158,7 @@
 								<h1 class="klb-page-title"><?php the_title(); ?></h1>
 								<div class="klb-post">
 									<?php the_content (); ?>
-									<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+									<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 								</div>
 							<?php endwhile; ?>
 							<?php comments_template(); ?>

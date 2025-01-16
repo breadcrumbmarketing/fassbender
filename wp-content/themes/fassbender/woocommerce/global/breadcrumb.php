@@ -22,13 +22,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! empty( $breadcrumb ) ) {
 
-	echo Fassbender_sanitize_data($wrap_before);
+	echo medibazar_sanitize_data($wrap_before);
 ?>
 <ul class="breadcrumb-menu">
 <?php
 	foreach ( $breadcrumb as $key => $crumb ) {
 
-		echo Fassbender_sanitize_data($before);
+		echo medibazar_sanitize_data($before);
 
 		if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
 			echo '<li><a href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a></li>';
@@ -36,13 +36,13 @@ if ( ! empty( $breadcrumb ) ) {
 			echo '<li><span>'.esc_html( $crumb[0] ).'</span</li>';
 		}
 
-		echo Fassbender_sanitize_data($after);
+		echo medibazar_sanitize_data($after);
 
 
 	}
 ?>
 </ul>
 <?php
-	echo Fassbender_sanitize_data($wrap_after);
+	echo medibazar_sanitize_data($wrap_after);
 
 }

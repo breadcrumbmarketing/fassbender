@@ -14,13 +14,13 @@
 				<?php the_tags( '<span><i class="far fa-bookmark"></i>', ', ', ' </span>'); ?>
 				
 				<?php if ( is_sticky()) {
-					printf( '<span class="sticky"><i class="far fa-star"></i>%s</span>', esc_html__('Featured', 'Fassbender' ) );
+					printf( '<span class="sticky"><i class="far fa-star"></i>%s</span>', esc_html__('Featured', 'medibazar' ) );
 				} ?>
 			</div>
 			<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 			<div class="klb-post">
 				<?php the_content(); ?>
-				<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'Fassbender' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
+				<?php wp_link_pages(array('before' => '<div class="klb-pagination">' . esc_html__( 'Pages:', 'medibazar' ),'after'  => '</div>', 'next_or_number' => 'number')); ?>
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,9 @@
 <?php
  
 /*************************************************
-## Fassbender Shop View Grid-List
+## medibazar Shop View Grid-List
 *************************************************/ 
-function Fassbender_shop_view(){	
+function medibazar_shop_view(){	
 	$getview  = isset( $_GET['shop_view'] ) ? $_GET['shop_view'] : '';
 	if($getview){
 		return $getview;
@@ -11,9 +11,9 @@ function Fassbender_shop_view(){
 }
 
 /*************************************************
-## Fassbender Stock Status
+## medibazar Stock Status
 *************************************************/ 
-function Fassbender_stock_status(){
+function medibazar_stock_status(){
 	$stock_status  = isset( $_GET['stock_status'] ) ? $_GET['stock_status'] : '';
 
 	if($stock_status == 'instock'){
@@ -22,9 +22,9 @@ function Fassbender_stock_status(){
 }
 
 /*************************************************
-## Fassbender on Sale
+## medibazar on Sale
 *************************************************/ 
-function Fassbender_on_sale(){
+function medibazar_on_sale(){
 	$on_sale  = isset( $_GET['on_sale'] ) ? $_GET['on_sale'] : '';
 
 	if($on_sale == 'onsale'){
@@ -33,10 +33,10 @@ function Fassbender_on_sale(){
 }
 
 /*************************************************
-## Fassbender Product Query
+## medibazar Product Query
 *************************************************/ 
-function Fassbender_product_query( $q ){
-	if(Fassbender_stock_status() == 'instock'){
+function medibazar_product_query( $q ){
+	if(medibazar_stock_status() == 'instock'){
 		$q->set( 'meta_query', array (
 			array(
 				'meta_key' 	=> '_stock_status',
@@ -45,18 +45,18 @@ function Fassbender_product_query( $q ){
 		));
 	}
 	
-	if(Fassbender_on_sale() == 'onsale'){
+	if(medibazar_on_sale() == 'onsale'){
 		$q->set ( 'post__in', wc_get_product_ids_on_sale() );
 	}
 
 }
-add_action( 'woocommerce_product_query', 'Fassbender_product_query', 10, 2 );
+add_action( 'woocommerce_product_query', 'medibazar_product_query', 10, 2 );
 
 
 /*************************************************
-## Fassbender Product Tax Query
+## medibazar Product Tax Query
 *************************************************/ 
-function Fassbender_woocommerce_product_query_tax_query( $tax_query, $instance ) {
+function medibazar_woocommerce_product_query_tax_query( $tax_query, $instance ) {
 	
 	if(isset($_GET['filter_cat'])){
 		if(!empty($_GET['filter_cat'])){
@@ -70,12 +70,12 @@ function Fassbender_woocommerce_product_query_tax_query( $tax_query, $instance )
 	
     return $tax_query; 
 }; 
-add_filter( 'woocommerce_product_query_tax_query', 'Fassbender_woocommerce_product_query_tax_query', 10, 2 );
+add_filter( 'woocommerce_product_query_tax_query', 'medibazar_woocommerce_product_query_tax_query', 10, 2 );
 
 /*************************************************
-## Fassbender GET Cat URL
+## medibazar GET Cat URL
 *************************************************/ 
-function Fassbender_get_cat_url($termid){
+function medibazar_get_cat_url($termid){
 	global $wp;
 	if ( '' === get_option( 'permalink_structure' ) ) {
 		$link = remove_query_arg( array( 'page', 'paged' ), add_query_arg( $wp->query_string, '', home_url( $wp->request ) ) );
@@ -109,9 +109,9 @@ function Fassbender_get_cat_url($termid){
 }
 
 /*************************************************
-## Fassbender Remove Filter
+## medibazar Remove Filter
 *************************************************/ 
-function Fassbender_remove_klb_filter(){
+function medibazar_remove_klb_filter(){
 	
 	$output = '';
 
@@ -119,7 +119,7 @@ function Fassbender_remove_klb_filter(){
     $min_price = isset( $_GET['min_price'] ) ? wc_clean( $_GET['min_price'] ) : 0; 
     $max_price = isset( $_GET['max_price'] ) ? wc_clean( $_GET['max_price'] ) : 0; 
 
-	if(! empty( $_chosen_attributes ) || isset($_GET['filter_cat']) || 0 < $min_price || 0 < $max_price || Fassbender_stock_status() == 'instock' || Fassbender_on_sale() == 'onsale'){
+	if(! empty( $_chosen_attributes ) || isset($_GET['filter_cat']) || 0 < $min_price || 0 < $max_price || medibazar_stock_status() == 'instock' || medibazar_on_sale() == 'onsale'){
 
 		global $wp;
 	
@@ -131,7 +131,7 @@ function Fassbender_remove_klb_filter(){
 
 		$output .= '<ul class="remove-filter">';
 		
-		$output .= '<li><a href="'.esc_url(remove_query_arg(array_keys($_GET))).'" class="remove-filter-element clear-all">'.esc_html__( 'Clear filters', 'Fassbender-core' ).'</a></li>';
+		$output .= '<li><a href="'.esc_url(remove_query_arg(array_keys($_GET))).'" class="remove-filter-element clear-all">'.esc_html__( 'Clear filters', 'medibazar-core' ).'</a></li>';
 
 		if ( ! empty( $_chosen_attributes ) ) {
 			foreach ( $_chosen_attributes as $taxonomy => $data ) {
@@ -156,12 +156,12 @@ function Fassbender_remove_klb_filter(){
 			}
 		}
 
-		if(Fassbender_stock_status() == 'instock'){
-		$output .= '<li><a href="'.esc_url(remove_query_arg('stock_status')).'" class="remove-filter-element stock_status">'.esc_html__('In Stock','Fassbender').'</a></li>';
+		if(medibazar_stock_status() == 'instock'){
+		$output .= '<li><a href="'.esc_url(remove_query_arg('stock_status')).'" class="remove-filter-element stock_status">'.esc_html__('In Stock','medibazar').'</a></li>';
 		}
 		
-		if(Fassbender_on_sale() == 'onsale'){
-		$output .= '<li><a href="'.esc_url(remove_query_arg('on_sale')).'" class="remove-filter-element on_sale">'.esc_html__('On Sale','Fassbender').'</a></li>';
+		if(medibazar_on_sale() == 'onsale'){
+		$output .= '<li><a href="'.esc_url(remove_query_arg('on_sale')).'" class="remove-filter-element on_sale">'.esc_html__('On Sale','medibazar').'</a></li>';
 		}
 
 		if($min_price){
@@ -182,12 +182,12 @@ function Fassbender_remove_klb_filter(){
 			
 			foreach ( $terms as $term ) {
 				$term_children = get_term_children( $term->term_id, 'product_cat' );
-				$output .= '<li><a href="'.esc_url( Fassbender_get_cat_url($term->term_id) ).'" class="remove-filter-element product_cat" id="'.esc_attr($term->term_id).'">'.esc_html($term->name).'</a></li>';
+				$output .= '<li><a href="'.esc_url( medibazar_get_cat_url($term->term_id) ).'" class="remove-filter-element product_cat" id="'.esc_attr($term->term_id).'">'.esc_html($term->name).'</a></li>';
 				if($term_children){
 					foreach($term_children as $child){
 						$childterm = get_term_by( 'id', $child, 'product_cat' );
 						if(in_array($childterm->term_id, explode(',',$_GET['filter_cat']))){ 
-							$output .= '<li><a href="'.esc_url( Fassbender_get_cat_url($childterm->term_id) ).'" class="remove-filter-element product_cat" id="'.esc_attr($childterm->term_id).'">'.esc_html($childterm->name).'</a></li>';
+							$output .= '<li><a href="'.esc_url( medibazar_get_cat_url($childterm->term_id) ).'" class="remove-filter-element product_cat" id="'.esc_attr($childterm->term_id).'">'.esc_html($childterm->name).'</a></li>';
 						}
 					}
 				}
@@ -202,10 +202,10 @@ function Fassbender_remove_klb_filter(){
 }
 
 /*************************************************
-## Fassbender Current Page URL
+## medibazar Current Page URL
 *************************************************/ 
-add_filter( 'woocommerce_widget_get_current_page_url', 'Fassbender_current_page_url', 10, 2 );
-function Fassbender_current_page_url( $link, $that ){
+add_filter( 'woocommerce_widget_get_current_page_url', 'medibazar_current_page_url', 10, 2 );
+function medibazar_current_page_url( $link, $that ){
 	if ( isset( $_GET['filter_cat'] ) ) {
 		$link = add_query_arg( 'filter_cat', wc_clean( wp_unslash( $_GET['filter_cat'] ) ), $link );
 	}
@@ -232,7 +232,7 @@ function Fassbender_current_page_url( $link, $that ){
 /*************************************************
 ## Get Body Class
 *************************************************/ 
-function Fassbender_get_body_class( $class ) {
+function medibazar_get_body_class( $class ) {
 	if(is_shop() || is_product_category()){
 		$bodyclasses = get_body_class();
 		
@@ -246,8 +246,8 @@ function Fassbender_get_body_class( $class ) {
 ## is pjax request
 *************************************************/ 
 
-if( ! function_exists( 'Fassbender_is_pjax' ) ) {
-	function Fassbender_is_pjax(){
+if( ! function_exists( 'medibazar_is_pjax' ) ) {
+	function medibazar_is_pjax(){
 		if(is_shop() || is_product_category()){
 			$request_headers = function_exists( 'getallheaders') ? getallheaders() : array();
 
@@ -257,11 +257,11 @@ if( ! function_exists( 'Fassbender_is_pjax' ) ) {
 }
 
 
-add_action('woocommerce_after_main_content','Fassbender_mobile_sidebar');
-function Fassbender_mobile_sidebar(){
+add_action('woocommerce_after_main_content','medibazar_mobile_sidebar');
+function medibazar_mobile_sidebar(){
 ?>
 
-<?php if(get_theme_mod('Fassbender_grid_list_view','0') == '1'){ ?>
+<?php if(get_theme_mod('medibazar_grid_list_view','0') == '1'){ ?>
 	<?php if(is_shop()){ ?>
 		<?php get_template_part('includes/woocommerce-mobile-filter'); ?> 
 	<?php } ?>

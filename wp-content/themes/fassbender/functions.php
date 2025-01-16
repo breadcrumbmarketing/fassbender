@@ -2,8 +2,8 @@
 /**
  * functions.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.9.0
+ * @subpackage medibazar
+ * @since medibazar 1.9.0
  * 
  */
 
@@ -11,20 +11,20 @@
 ## Admin style and scripts  
 *************************************************/ 
 
-function Fassbender_admin_styles() {
-     wp_enqueue_style('Fassbender-klbtheme',   get_template_directory_uri() .'/assets/css/admin/klbtheme.css');
-	 wp_enqueue_script('Fassbender-init', 	  get_template_directory_uri() .'/assets/js/init.js', array('jquery','media-upload','thickbox'));
-     wp_enqueue_script( 'Fassbender-register', get_template_directory_uri() . '/assets/js/admin/register.js', array('jquery'), '1.0', true);
+function medibazar_admin_styles() {
+     wp_enqueue_style('medibazar-klbtheme',   get_template_directory_uri() .'/assets/css/admin/klbtheme.css');
+	 wp_enqueue_script('medibazar-init', 	  get_template_directory_uri() .'/assets/js/init.js', array('jquery','media-upload','thickbox'));
+     wp_enqueue_script( 'medibazar-register', get_template_directory_uri() . '/assets/js/admin/register.js', array('jquery'), '1.0', true);
 }
-add_action('admin_enqueue_scripts', 'Fassbender_admin_styles');
+add_action('admin_enqueue_scripts', 'medibazar_admin_styles');
 
  /*************************************************
-## Fassbender Fonts
+## medibazar Fonts
 *************************************************/
-function Fassbender_fonts_url_roboto() {
+function medibazar_fonts_url_roboto() {
         $fonts_url = '';
 	
-		$roboto = _x( 'on', 'Roboto font: on or off', 'Fassbender' );		
+		$roboto = _x( 'on', 'Roboto font: on or off', 'medibazar' );		
 
 		if ( 'off' !== $roboto ) {
 		$font_families = array();
@@ -44,10 +44,10 @@ function Fassbender_fonts_url_roboto() {
 return esc_url_raw( $fonts_url );
 }
 
-function Fassbender_fonts_url_poppins() {
+function medibazar_fonts_url_poppins() {
         $fonts_url = '';
 	
-		$poppins = _x( 'on', 'Poppins font: on or off', 'Fassbender' );	
+		$poppins = _x( 'on', 'Poppins font: on or off', 'medibazar' );	
 
 		if ( 'off' !== $poppins ) {
 		$font_families = array();
@@ -70,59 +70,59 @@ return esc_url_raw( $fonts_url );
 /*************************************************
 ## Styles and Scripts
 *************************************************/ 
-define('Fassbender_INDEX_CSS', get_template_directory_uri()  . '/assets/css/');
-define('Fassbender_INDEX_JS', get_template_directory_uri()  . '/assets/js/');
+define('medibazar_INDEX_CSS', get_template_directory_uri()  . '/assets/css/');
+define('medibazar_INDEX_JS', get_template_directory_uri()  . '/assets/js/');
 
-function Fassbender_scripts() {
+function medibazar_scripts() {
 	
      if ( is_admin_bar_showing() ) {
-       wp_enqueue_style( 'Fassbender-klbtheme', Fassbender_INDEX_CSS . '/admin/klbtheme.css', false, '1.0');    
+       wp_enqueue_style( 'medibazar-klbtheme', medibazar_INDEX_CSS . '/admin/klbtheme.css', false, '1.0');    
      }	
 	 
      if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	 
-     wp_enqueue_style( 'owl-carousel', 				Fassbender_INDEX_CSS  . '/owl.carousel.min.css', false, '1.0');	
-     wp_enqueue_style( 'animate',    				Fassbender_INDEX_CSS  . '/animate.min.css', false, '1.0');
-     wp_enqueue_style( 'magnific-popup',    		Fassbender_INDEX_CSS  . '/magnific-popup.css', false, '1.0');
-     wp_enqueue_style( 'fontawesome-all', 			Fassbender_INDEX_CSS  . '/fontawesome-all.min.css', false, '1.0');	
-     wp_enqueue_style( 'themify-icons', 			Fassbender_INDEX_CSS  . '/themify-icons.css', false, '1.0');	
-     wp_enqueue_style( 'meanmenu', 					Fassbender_INDEX_CSS  . '/meanmenu.css', false, '1.0');
-     wp_enqueue_style( 'slick', 					Fassbender_INDEX_CSS  . '/slick.css', false, '1.0');
-     wp_enqueue_style( 'Fassbender-main', 			Fassbender_INDEX_CSS  . '/main.css', false, '1.0');
-     wp_enqueue_style( 'Fassbender-responsive', 		Fassbender_INDEX_CSS  . '/responsive.css', false, '1.0');
-     wp_enqueue_style( 'Fassbender-font-roboto',  	Fassbender_fonts_url_roboto(), array(), null );
-     wp_enqueue_style( 'Fassbender-font-poppins',  	Fassbender_fonts_url_poppins(), array(), null );
-  	 wp_enqueue_style( 'Fassbender-style',            get_stylesheet_uri() ); 
-	 wp_style_add_data( 'Fassbender-style', 'rtl', 'replace' );
+     wp_enqueue_style( 'owl-carousel', 				medibazar_INDEX_CSS  . '/owl.carousel.min.css', false, '1.0');	
+     wp_enqueue_style( 'animate',    				medibazar_INDEX_CSS  . '/animate.min.css', false, '1.0');
+     wp_enqueue_style( 'magnific-popup',    		medibazar_INDEX_CSS  . '/magnific-popup.css', false, '1.0');
+     wp_enqueue_style( 'fontawesome-all', 			medibazar_INDEX_CSS  . '/fontawesome-all.min.css', false, '1.0');	
+     wp_enqueue_style( 'themify-icons', 			medibazar_INDEX_CSS  . '/themify-icons.css', false, '1.0');	
+     wp_enqueue_style( 'meanmenu', 					medibazar_INDEX_CSS  . '/meanmenu.css', false, '1.0');
+     wp_enqueue_style( 'slick', 					medibazar_INDEX_CSS  . '/slick.css', false, '1.0');
+     wp_enqueue_style( 'medibazar-main', 			medibazar_INDEX_CSS  . '/main.css', false, '1.0');
+     wp_enqueue_style( 'medibazar-responsive', 		medibazar_INDEX_CSS  . '/responsive.css', false, '1.0');
+     wp_enqueue_style( 'medibazar-font-roboto',  	medibazar_fonts_url_roboto(), array(), null );
+     wp_enqueue_style( 'medibazar-font-poppins',  	medibazar_fonts_url_poppins(), array(), null );
+  	 wp_enqueue_style( 'medibazar-style',            get_stylesheet_uri() ); 
+	 wp_style_add_data( 'medibazar-style', 'rtl', 'replace' );
 
-	 $mapkey = get_theme_mod('Fassbender_mapapi');
+	 $mapkey = get_theme_mod('medibazar_mapapi');
 
-     wp_enqueue_script( 'modernizr',     	 			Fassbender_INDEX_JS . '/vendor/modernizr-3.5.0.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'popper',     	 				Fassbender_INDEX_JS . '/popper.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'bootstrap',    	    		Fassbender_INDEX_JS . '/bootstrap.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'owl-carousel',    	    		Fassbender_INDEX_JS . '/owl.carousel.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'isotope-pkgd',    	    		Fassbender_INDEX_JS . '/isotope.pkgd.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'slick',    	    			Fassbender_INDEX_JS . '/slick.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-meanmenu',    	    	Fassbender_INDEX_JS . '/jquery.meanmenu.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'wow',    						Fassbender_INDEX_JS . '/wow.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'waypoints',    				Fassbender_INDEX_JS . '/waypoints.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-appear',    			Fassbender_INDEX_JS . '/jquery.appear.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-countdown',    			Fassbender_INDEX_JS . '/jquery.countdown.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-knob',    				Fassbender_INDEX_JS . '/jquery.knob.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-counterup',    			Fassbender_INDEX_JS . '/jquery.counterup.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-scrollup',    			Fassbender_INDEX_JS . '/jquery.scrollUp.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'jquery-magnific-popup',    	Fassbender_INDEX_JS . '/jquery.magnific-popup.min.js', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'Fassbender-plugins',    		Fassbender_INDEX_JS . '/plugins.js', array('jquery'), '1.0', true);
-     wp_register_script( 'Fassbender-filter-toggle',		Fassbender_INDEX_JS . '/custom/filter_toggle.js', array('jquery'), '1.0', true);
-	 wp_register_script( 'Fassbender-counter',   		Fassbender_INDEX_JS . '/custom/counter.js', array('jquery'), '1.0', true);
-     wp_register_script( 'Fassbender-plus-minus',    	Fassbender_INDEX_JS . '/custom/plus_minus.js', array('jquery'), '1.0', true);
-     wp_register_script( 'Fassbender-carousel-slider',  	Fassbender_INDEX_JS . '/custom/carousel_slider.js', array('jquery'), '1.0', true);
-	 wp_register_script( 'Fassbender-googlemap',      	'//maps.googleapis.com/maps/api/js?key='. $mapkey .'', array('jquery'), '1.0', true);
-     wp_enqueue_script( 'Fassbender-scripts',     		Fassbender_INDEX_JS . '/main.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'modernizr',     	 			medibazar_INDEX_JS . '/vendor/modernizr-3.5.0.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'popper',     	 				medibazar_INDEX_JS . '/popper.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'bootstrap',    	    		medibazar_INDEX_JS . '/bootstrap.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'owl-carousel',    	    		medibazar_INDEX_JS . '/owl.carousel.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'isotope-pkgd',    	    		medibazar_INDEX_JS . '/isotope.pkgd.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'slick',    	    			medibazar_INDEX_JS . '/slick.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-meanmenu',    	    	medibazar_INDEX_JS . '/jquery.meanmenu.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'wow',    						medibazar_INDEX_JS . '/wow.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'waypoints',    				medibazar_INDEX_JS . '/waypoints.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-appear',    			medibazar_INDEX_JS . '/jquery.appear.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-countdown',    			medibazar_INDEX_JS . '/jquery.countdown.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-knob',    				medibazar_INDEX_JS . '/jquery.knob.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-counterup',    			medibazar_INDEX_JS . '/jquery.counterup.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-scrollup',    			medibazar_INDEX_JS . '/jquery.scrollUp.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'jquery-magnific-popup',    	medibazar_INDEX_JS . '/jquery.magnific-popup.min.js', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'medibazar-plugins',    		medibazar_INDEX_JS . '/plugins.js', array('jquery'), '1.0', true);
+     wp_register_script( 'medibazar-filter-toggle',		medibazar_INDEX_JS . '/custom/filter_toggle.js', array('jquery'), '1.0', true);
+	 wp_register_script( 'medibazar-counter',   		medibazar_INDEX_JS . '/custom/counter.js', array('jquery'), '1.0', true);
+     wp_register_script( 'medibazar-plus-minus',    	medibazar_INDEX_JS . '/custom/plus_minus.js', array('jquery'), '1.0', true);
+     wp_register_script( 'medibazar-carousel-slider',  	medibazar_INDEX_JS . '/custom/carousel_slider.js', array('jquery'), '1.0', true);
+	 wp_register_script( 'medibazar-googlemap',      	'//maps.googleapis.com/maps/api/js?key='. $mapkey .'', array('jquery'), '1.0', true);
+     wp_enqueue_script( 'medibazar-scripts',     		medibazar_INDEX_JS . '/main.js', array('jquery'), '1.0', true);
 
 
     }
-add_action( 'wp_enqueue_scripts', 'Fassbender_scripts' );
+add_action( 'wp_enqueue_scripts', 'medibazar_scripts' );
 
 /*************************************************
 ## Theme Setup
@@ -130,7 +130,7 @@ add_action( 'wp_enqueue_scripts', 'Fassbender_scripts' );
 
 if ( ! isset( $content_width ) ) $content_width = 960;
 
-function Fassbender_theme_setup() {
+function medibazar_theme_setup() {
 	
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
@@ -140,10 +140,10 @@ function Fassbender_theme_setup() {
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 	add_theme_support( 'woocommerce', array('gallery_thumbnail_image_width' => 99,'thumbnail_image_width' => 90,) );
-	load_theme_textdomain( 'Fassbender', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'medibazar', get_template_directory() . '/languages' );
 	remove_theme_support( 'widgets-block-editor' );
 }
-add_action( 'after_setup_theme', 'Fassbender_theme_setup' );
+add_action( 'after_setup_theme', 'medibazar_theme_setup' );
 
 
 /*************************************************
@@ -152,54 +152,54 @@ add_action( 'after_setup_theme', 'Fassbender_theme_setup' );
 
 require_once get_template_directory() . '/includes/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'Fassbender_register_required_plugins' );
+add_action( 'tgmpa_register', 'medibazar_register_required_plugins' );
 
-function Fassbender_register_required_plugins() {
+function medibazar_register_required_plugins() {
 
-	$url = 'http://klbtheme.com/Fassbender/plugins/';
+	$url = 'http://klbtheme.com/medibazar/plugins/';
 	$mainurl = 'http://klbtheme.com/plugins/';
 
 	$plugins = array(
 		
         array(
-            'name'                  => esc_html__('Meta Box','Fassbender'),
+            'name'                  => esc_html__('Meta Box','medibazar'),
             'slug'                  => 'meta-box',
         ),
 
         array(
-            'name'                  => esc_html__('Contact Form 7','Fassbender'),
+            'name'                  => esc_html__('Contact Form 7','medibazar'),
             'slug'                  => 'contact-form-7',
         ),
 
         array(
-            'name'                  => esc_html__('WooCommerce','Fassbender'),
+            'name'                  => esc_html__('WooCommerce','medibazar'),
             'slug'                  => 'woocommerce',
         ),
 		
 		array(
-            'name'                  => esc_html__('WooCommerce Wishlist','Fassbender'),
+            'name'                  => esc_html__('WooCommerce Wishlist','medibazar'),
             'slug'                  => 'ti-woocommerce-wishlist',
         ),
 		
         array(
-            'name'                  => esc_html__('Kirki','Fassbender'),
+            'name'                  => esc_html__('Kirki','medibazar'),
             'slug'                  => 'kirki',
         ),
 		
         array(
-            'name'                  => esc_html__('Elementor','Fassbender'),
+            'name'                  => esc_html__('Elementor','medibazar'),
             'slug'                  => 'elementor',
         ),
 		
 		array(
-            'name'                  => esc_html__('Instagram Feed','Fassbender'),
+            'name'                  => esc_html__('Instagram Feed','medibazar'),
             'slug'                  => 'instagram-feed',
         ),
 		
         array(
-            'name'                  => esc_html__('Fassbender Core','Fassbender'),
-            'slug'                  => 'Fassbender-core',
-            'source'                => $url . 'Fassbender-core.zip',
+            'name'                  => esc_html__('medibazar Core','medibazar'),
+            'slug'                  => 'medibazar-core',
+            'source'                => $url . 'medibazar-core.zip',
             'required'              => false,
             'version'               => '1.2.8',
             'force_activation'      => false,
@@ -208,7 +208,7 @@ function Fassbender_register_required_plugins() {
         ),
 		
         array(
-            'name'                  => esc_html__('Revolution Slider','Fassbender'),
+            'name'                  => esc_html__('Revolution Slider','medibazar'),
             'slug'                  => 'revslider',
             'source'                => $mainurl . 'revslider.zip',
             'required'              => false,
@@ -219,7 +219,7 @@ function Fassbender_register_required_plugins() {
         ),
 
         array(
-            'name'                  => esc_html__('Envato Market','Fassbender'),
+            'name'                  => esc_html__('Envato Market','medibazar'),
             'slug'                  => 'envato-market',
             'source'                => $mainurl . 'envato-market.zip',
             'required'              => true,
@@ -233,7 +233,7 @@ function Fassbender_register_required_plugins() {
 	);
 
 	$config = array(
-		'id'           => 'Fassbender',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'id'           => 'medibazar',                 // Unique ID for hashing notices for multiple instances of TGMPA.
 		'default_path' => '',                      // Default absolute path to bundled plugins.
 		'menu'         => 'tgmpa-install-plugins', // Menu slug.
 		'parent_slug'  => 'themes.php',            // Parent menu slug.
@@ -249,28 +249,28 @@ function Fassbender_register_required_plugins() {
 }
 
 /*************************************************
-## Fassbender Register Menu 
+## medibazar Register Menu 
 *************************************************/
 
-function Fassbender_register_menus() {
-	register_nav_menus( array( 'main-menu' 	   => esc_html__('Primary Navigation Menu','Fassbender')) );
-	$topheader = get_theme_mod('Fassbender_top_header','0');
-	$footermenu = get_theme_mod('Fassbender_footer_menu','0');
+function medibazar_register_menus() {
+	register_nav_menus( array( 'main-menu' 	   => esc_html__('Primary Navigation Menu','medibazar')) );
+	$topheader = get_theme_mod('medibazar_top_header','0');
+	$footermenu = get_theme_mod('medibazar_footer_menu','0');
 
 	if($topheader == '1'){
-		register_nav_menus( array( 'top-right-menu' => esc_html__('Top Right Menu','Fassbender')) );
+		register_nav_menus( array( 'top-right-menu' => esc_html__('Top Right Menu','medibazar')) );
 	}
 	
 	if($footermenu == '1'){
-		register_nav_menus( array( 'footer-menu' => esc_html__('Footer Menu','Fassbender')) );
+		register_nav_menus( array( 'footer-menu' => esc_html__('Footer Menu','medibazar')) );
 	}
 }
-add_action('init', 'Fassbender_register_menus');
+add_action('init', 'medibazar_register_menus');
 
 /*************************************************
-## Fassbender Menu
+## medibazar Menu
 *************************************************/ 
-class Fassbender_description_walker extends Walker_Nav_Menu {
+class medibazar_description_walker extends Walker_Nav_Menu {
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// depth dependent classes
 		$indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
@@ -336,8 +336,8 @@ class Fassbender_description_walker extends Walker_Nav_Menu {
       }
 }
 
-add_filter('nav_menu_css_class' , 'Fassbender_nav_class' , 10 , 2);
-function Fassbender_nav_class($classes, $item){
+add_filter('nav_menu_css_class' , 'medibazar_nav_class' , 10 , 2);
+function medibazar_nav_class($classes, $item){
      if( in_array('current-menu-item', $classes) ){
              $classes[] = 'active';
      }
@@ -348,16 +348,16 @@ function Fassbender_nav_class($classes, $item){
 ## Excerpt More
 *************************************************/ 
 
-function Fassbender_excerpt_more($more) {
+function medibazar_excerpt_more($more) {
   global $post;
-  return '<div class="klb-readmore"><a class="c-btn" href="'. esc_url(get_permalink($post->ID)) . '">' . esc_html__('Read More', 'Fassbender') . ' <i class="far fa-plus"></i></a></div>';
+  return '<div class="klb-readmore"><a class="c-btn" href="'. esc_url(get_permalink($post->ID)) . '">' . esc_html__('Read More', 'medibazar') . ' <i class="far fa-plus"></i></a></div>';
   }
- add_filter('excerpt_more', 'Fassbender_excerpt_more');
+ add_filter('excerpt_more', 'medibazar_excerpt_more');
  
 /*************************************************
 ## Word Limiter
 *************************************************/ 
-function Fassbender_limit_words($string, $limit) {
+function medibazar_limit_words($string, $limit) {
 	$words = explode(' ', $string);
 	return implode(' ', array_slice($words, 0, $limit));
 }
@@ -366,11 +366,11 @@ function Fassbender_limit_words($string, $limit) {
 ## Widgets
 *************************************************/ 
 
-function Fassbender_widgets_init() {
+function medibazar_widgets_init() {
 	register_sidebar( array(
-	  'name' => esc_html__( 'Blog Sidebar', 'Fassbender' ),
+	  'name' => esc_html__( 'Blog Sidebar', 'medibazar' ),
 	  'id' => 'blog-sidebar',
-	  'description'   => esc_html__( 'These are widgets for the Blog page.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Blog page.','medibazar' ),
 	  'before_widget' => '<div class="widget %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="widget-title">',
@@ -378,9 +378,9 @@ function Fassbender_widgets_init() {
 	) );
 
 	register_sidebar( array(
-	  'name' => esc_html__( 'Shop Sidebar', 'Fassbender' ),
+	  'name' => esc_html__( 'Shop Sidebar', 'medibazar' ),
 	  'id' => 'shop-sidebar',
-	  'description'   => esc_html__( 'These are widgets for the Shop.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Shop.','medibazar' ),
 	  'before_widget' => '<div class="category-sidebar mb-30 %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="cat-title">',
@@ -388,9 +388,9 @@ function Fassbender_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-	  'name' => esc_html__( 'Sidebar Menu', 'Fassbender' ),
+	  'name' => esc_html__( 'Sidebar Menu', 'medibazar' ),
 	  'id' => 'sidebar-menu',
-	  'description'   => esc_html__( 'These are widgets for the menu sidebar.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the menu sidebar.','medibazar' ),
 	  'before_widget' => '<div class="sidebar-modal-widget %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="title">',
@@ -398,9 +398,9 @@ function Fassbender_widgets_init() {
 	) );
 
 	register_sidebar( array(
-	  'name' => esc_html__( 'Footer First Column', 'Fassbender' ),
+	  'name' => esc_html__( 'Footer First Column', 'medibazar' ),
 	  'id' => 'footer-1',
-	  'description'   => esc_html__( 'These are widgets for the Footer.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Footer.','medibazar' ),
 	  'before_widget' => '<div class="klbfooterwidget footer-wrapper mb-30 %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="footer-title">',
@@ -408,9 +408,9 @@ function Fassbender_widgets_init() {
 	) );
 
 	register_sidebar( array(
-	  'name' => esc_html__( 'Footer Second Column', 'Fassbender' ),
+	  'name' => esc_html__( 'Footer Second Column', 'medibazar' ),
 	  'id' => 'footer-2',
-	  'description'   => esc_html__( 'These are widgets for the Footer.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Footer.','medibazar' ),
 	  'before_widget' => '<div class="klbfooterwidget footer-wrapper ml-50 mb-30 %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="footer-title">',
@@ -418,9 +418,9 @@ function Fassbender_widgets_init() {
 	) );
 
 	register_sidebar( array(
-	  'name' => esc_html__( 'Footer Third Column', 'Fassbender' ),
+	  'name' => esc_html__( 'Footer Third Column', 'medibazar' ),
 	  'id' => 'footer-3',
-	  'description'   => esc_html__( 'These are widgets for the Footer.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Footer.','medibazar' ),
 	  'before_widget' => '<div class="klbfooterwidget footer-wrapper ml-30 mb-30 %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="footer-title">',
@@ -428,9 +428,9 @@ function Fassbender_widgets_init() {
 	) );
 
 	register_sidebar( array(
-	  'name' => esc_html__( 'Footer Fourth Column', 'Fassbender' ),
+	  'name' => esc_html__( 'Footer Fourth Column', 'medibazar' ),
 	  'id' => 'footer-4',
-	  'description'   => esc_html__( 'These are widgets for the Footer.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Footer.','medibazar' ),
 	  'before_widget' => '<div class="klbfooterwidget footer-wrapper ml-20 mb-30 %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="footer-title">',
@@ -438,9 +438,9 @@ function Fassbender_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-	  'name' => esc_html__( 'Footer Fifth Column', 'Fassbender' ),
+	  'name' => esc_html__( 'Footer Fifth Column', 'medibazar' ),
 	  'id' => 'footer-5',
-	  'description'   => esc_html__( 'These are widgets for the Footer.','Fassbender' ),
+	  'description'   => esc_html__( 'These are widgets for the Footer.','medibazar' ),
 	  'before_widget' => '<div class="klbfooterwidget footer-wrapper ml-20 mb-30 %2$s">',
 	  'after_widget'  => '</div>',
 	  'before_title'  => '<h3 class="footer-title">',
@@ -448,14 +448,14 @@ function Fassbender_widgets_init() {
 	) );
 
 }
-add_action( 'widgets_init', 'Fassbender_widgets_init' );
+add_action( 'widgets_init', 'medibazar_widgets_init' );
  
 /*************************************************
-## Fassbender Comment
+## medibazar Comment
 *************************************************/
 
-if ( ! function_exists( 'Fassbender_comment' ) ) :
- function Fassbender_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'medibazar_comment' ) ) :
+ function medibazar_comment( $comment, $args, $depth ) {
   $GLOBALS['comment'] = $comment;
   switch ( $comment->comment_type ) :
    case 'pingback' :
@@ -463,7 +463,7 @@ if ( ! function_exists( 'Fassbender_comment' ) ) :
   ?>
 
    <article class="post pingback">
-   <p><?php esc_html_e( 'Pingback:', 'Fassbender' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( esc_html__( '(Edit)', 'Fassbender' ), ' ' ); ?></p>
+   <p><?php esc_html_e( 'Pingback:', 'medibazar' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( esc_html__( '(Edit)', 'medibazar' ), ' ' ); ?></p>
   <?php
     break;
    default :
@@ -484,7 +484,7 @@ if ( ! function_exists( 'Fassbender_comment' ) ) :
 					<div class="klb-post">
 						<?php comment_text(); ?> 
 						<?php if ( $comment->comment_approved == '0' ) : ?>
-						<em><?php esc_html_e( 'Your comment is awaiting moderation.', 'Fassbender' ); ?></em>
+						<em><?php esc_html_e( 'Your comment is awaiting moderation.', 'medibazar' ); ?></em>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -500,35 +500,35 @@ if ( ! function_exists( 'Fassbender_comment' ) ) :
 endif;
 
 /*************************************************
-## Fassbender Comment Placeholder
+## medibazar Comment Placeholder
  *************************************************/
 
-add_filter( 'comment_form_default_fields', 'Fassbender_comment_placeholders' );
-function Fassbender_comment_placeholders( $fields ){
+add_filter( 'comment_form_default_fields', 'medibazar_comment_placeholders' );
+function medibazar_comment_placeholders( $fields ){
     $fields['author'] = str_replace(
         '<input',
-        '<input placeholder="'.esc_attr__('Name * ','Fassbender').'"',
+        '<input placeholder="'.esc_attr__('Name * ','medibazar').'"',
         $fields['author']
     );
     $fields['email'] = str_replace(
         '<input',
-        '<input placeholder="'.esc_attr__('Email *','Fassbender').'"',
+        '<input placeholder="'.esc_attr__('Email *','medibazar').'"',
         $fields['email']
     );
     $fields['url'] = str_replace(
         '<input',
-        '<input placeholder="'.esc_attr__('Website','Fassbender').'"',
+        '<input placeholder="'.esc_attr__('Website','medibazar').'"',
         $fields['url']
     );
     return $fields;
 }
 
-add_filter( 'comment_form_defaults', 'Fassbender_textarea_placeholder' );
-function Fassbender_textarea_placeholder( $fields ){
+add_filter( 'comment_form_defaults', 'medibazar_textarea_placeholder' );
+function medibazar_textarea_placeholder( $fields ){
 
     $fields['comment_field'] = str_replace(
         '<textarea',
-        '<textarea placeholder="'.esc_attr__('Comment','Fassbender').'"',
+        '<textarea placeholder="'.esc_attr__('Comment','medibazar').'"',
         $fields['comment_field']
     );
     return $fields;
@@ -536,38 +536,38 @@ function Fassbender_textarea_placeholder( $fields ){
 
 
 /*************************************************
-## Fassbender Widget Count Filter
+## medibazar Widget Count Filter
  *************************************************/
 
-function Fassbender_cat_count_span($links) {
+function medibazar_cat_count_span($links) {
   $links = str_replace('</a> (', '</a> <span class="catcount">(', $links);
   $links = str_replace(')', ')</span>', $links);
-  return Fassbender_sanitize_data($links);
+  return medibazar_sanitize_data($links);
 }
-add_filter('wp_list_categories', 'Fassbender_cat_count_span');
+add_filter('wp_list_categories', 'medibazar_cat_count_span');
  
-function Fassbender_archive_count_span( $links ) {
+function medibazar_archive_count_span( $links ) {
 	$links = str_replace( '</a>&nbsp;(', '</a><span class="catcount">(', $links );
 	$links = str_replace( ')', ')</span>', $links );
-	return Fassbender_sanitize_data($links);
+	return medibazar_sanitize_data($links);
 }
-add_filter( 'get_archives_link', 'Fassbender_archive_count_span' );
+add_filter( 'get_archives_link', 'medibazar_archive_count_span' );
 
 
 /*************************************************
 ## Pingback url auto-discovery header for single posts, pages, or attachments
  *************************************************/
-function Fassbender_pingback_header() {
+function medibazar_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
 	}
 }
-add_action( 'wp_head', 'Fassbender_pingback_header' );
+add_action( 'wp_head', 'medibazar_pingback_header' );
 
 /************************************************************
 ## DATA CONTROL FROM PAGE METABOX OR ELEMENTOR PAGE SETTINGS
 *************************************************************/
-function Fassbender_page_settings( $opt_id){
+function medibazar_page_settings( $opt_id){
 	
 	if ( class_exists( '\Elementor\Core\Settings\Manager' ) ) {
 		// Get the current post id
@@ -580,7 +580,7 @@ function Fassbender_page_settings( $opt_id){
 		$page_settings_model = $page_settings_manager->get_model( $post_id );
 
 		// Retrieve the color we added before
-		$output = $page_settings_model->get_settings( 'Fassbender_elementor_'.$opt_id );
+		$output = $page_settings_model->get_settings( 'medibazar_elementor_'.$opt_id );
 		
 		return $output;
 	}
@@ -589,11 +589,11 @@ function Fassbender_page_settings( $opt_id){
 /************************************************************
 ## Elementor Get Templates
 *************************************************************/
-function Fassbender_get_elementor_template($template_id){
+function medibazar_get_elementor_template($template_id){
 	if($template_id){
 
 	    $frontend = new \Elementor\Frontend;
-	    printf( '<div class="Fassbender-elementor-template template-'.esc_attr($template_id).'">%1$s</div>', $frontend->get_builder_content_for_display( $template_id, true ) );
+	    printf( '<div class="medibazar-elementor-template template-'.esc_attr($template_id).'">%1$s</div>', $frontend->get_builder_content_for_display( $template_id, true ) );
 	
 	    if ( class_exists( '\Elementor\Plugin' ) ) {
 	        $elementor = \Elementor\Plugin::instance();
@@ -609,23 +609,23 @@ function Fassbender_get_elementor_template($template_id){
 
 	}
 }
-add_action( 'Fassbender_before_main_shop', 'Fassbender_get_elementor_template', 10);
-add_action( 'Fassbender_after_main_shop', 'Fassbender_get_elementor_template', 10);
-add_action( 'Fassbender_before_main_footer', 'Fassbender_get_elementor_template', 10);
-add_action( 'Fassbender_after_main_footer', 'Fassbender_get_elementor_template', 10);
-add_action( 'Fassbender_before_main_header', 'Fassbender_get_elementor_template', 10);
-add_action( 'Fassbender_after_main_header', 'Fassbender_get_elementor_template', 10);
+add_action( 'medibazar_before_main_shop', 'medibazar_get_elementor_template', 10);
+add_action( 'medibazar_after_main_shop', 'medibazar_get_elementor_template', 10);
+add_action( 'medibazar_before_main_footer', 'medibazar_get_elementor_template', 10);
+add_action( 'medibazar_after_main_footer', 'medibazar_get_elementor_template', 10);
+add_action( 'medibazar_before_main_header', 'medibazar_get_elementor_template', 10);
+add_action( 'medibazar_after_main_header', 'medibazar_get_elementor_template', 10);
 
 /************************************************************
 ## Do Action for Templates and Product Categories
 *************************************************************/
-function Fassbender_do_action($hook){
+function medibazar_do_action($hook){
 	
 	if ( !class_exists( 'woocommerce' ) ) {
 		return;
 	}
 
-	$categorytemplate = get_theme_mod('Fassbender_elementor_template_each_shop_category');
+	$categorytemplate = get_theme_mod('medibazar_elementor_template_each_shop_category');
 	if(is_product_category()){
 		if($categorytemplate && array_search(get_queried_object()->term_id, array_column($categorytemplate, 'category_id')) !== false){
 			foreach($categorytemplate as $c){
@@ -643,16 +643,16 @@ function Fassbender_do_action($hook){
 }
 
 /*************************************************
-## Fassbender Get options
+## medibazar Get options
 *************************************************/
-function Fassbender_get_option(){	
+function medibazar_get_option(){	
 	$getopt  = isset( $_GET['opt'] ) ? $_GET['opt'] : '';
 
 	return esc_html($getopt);
 }
 
 /*************************************************
-## Fassbender Theme options
+## medibazar Theme options
 *************************************************/
 
 	require_once get_template_directory() . '/includes/metaboxes.php';

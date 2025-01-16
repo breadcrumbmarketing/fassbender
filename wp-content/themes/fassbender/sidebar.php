@@ -2,8 +2,8 @@
 /**
  * sidebar.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.0
+ * @subpackage medibazar
+ * @since medibazar 1.0
  * 
  */
  ?>

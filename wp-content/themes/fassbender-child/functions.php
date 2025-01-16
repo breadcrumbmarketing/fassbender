@@ -16,24 +16,24 @@
  *
  * @link https://codex.wordpress.org/Child_Themes
  */
-function Fassbender_child_enqueue_styles() {
+function medibazar_child_enqueue_styles() {
     wp_enqueue_style( 'parent-style' , get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'Fassbender-child-style',
+    wp_enqueue_style( 'medibazar-child-style',
         get_stylesheet_directory_uri() . '/style.css',
-        array( 'Fassbender-style' ),
+        array( 'medibazar-style' ),
         wp_get_theme()->get('Version')
     );
 }
 
-add_action(  'wp_enqueue_scripts', 'Fassbender_child_enqueue_styles', 99 );
+add_action(  'wp_enqueue_scripts', 'medibazar_child_enqueue_styles', 99 );
 
 
 
-function Fassbender_child_theme_setup() {
+function medibazar_child_theme_setup() {
     // Load the parent theme's text domain
-    load_theme_textdomain('Fassbender', get_template_directory() . '/languages');
+    load_theme_textdomain('medibazar', get_template_directory() . '/languages');
     
     // Optionally, load the child theme's text domain if you add custom translations
-    load_child_theme_textdomain('Fassbender', get_stylesheet_directory() . '/languages');
+    load_child_theme_textdomain('medibazar', get_stylesheet_directory() . '/languages');
 }
-add_action('after_setup_theme', 'Fassbender_child_theme_setup');
+add_action('after_setup_theme', 'medibazar_child_theme_setup');

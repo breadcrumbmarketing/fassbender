@@ -1,10 +1,10 @@
 /* global woodmart_settings */
 (function($) {
-	FassbenderThemeModule.$document.on(' FassbenderShopPageInit', function () {
-		FassbenderThemeModule.woocommercePriceSlider1();
+	medibazarThemeModule.$document.on(' medibazarShopPageInit', function () {
+		medibazarThemeModule.woocommercePriceSlider1();
 	});
 
-	FassbenderThemeModule.woocommercePriceSlider1 = function() {
+	medibazarThemeModule.woocommercePriceSlider1 = function() {
 		
 		// Price Slider 2
 		$( document.body ).on( 'price_slider_create price_slider_slide', function( event, min, max ) {
@@ -128,7 +128,7 @@
 				$min_price.val(current_min_price);
 				$max_price.val(current_max_price);
 
-				FassbenderThemeModule.$body.trigger('price_slider_create', [
+				medibazarThemeModule.$body.trigger('price_slider_create', [
 					current_min_price,
 					current_max_price
 				]);
@@ -137,13 +137,13 @@
 				$('input#min_price').val(ui.values[0]);
 				$('input#max_price').val(ui.values[1]);
 
-				FassbenderThemeModule.$body.trigger('price_slider_slide', [
+				medibazarThemeModule.$body.trigger('price_slider_slide', [
 					ui.values[0],
 					ui.values[1]
 				]);
 			},
 			change : function(event, ui) {
-				FassbenderThemeModule.$body.trigger('price_slider_change', [
+				medibazarThemeModule.$body.trigger('price_slider_change', [
 					ui.values[0],
 					ui.values[1]
 				]);
@@ -151,7 +151,7 @@
 		});
 
 		setTimeout(function() {
-			FassbenderThemeModule.$body.trigger('price_slider_create', [
+			medibazarThemeModule.$body.trigger('price_slider_create', [
 				current_min_price,
 				current_max_price
 			]);

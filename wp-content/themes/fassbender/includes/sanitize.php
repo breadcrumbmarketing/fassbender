@@ -1,10 +1,10 @@
 <?php
 
 /*************************************************
-## Fassbender Sanitize
+## medibazar Sanitize
 *************************************************/ 
 
-function Fassbender_sanitize_data( $string ) {
+function medibazar_sanitize_data( $string ) {
 	$klb_allowed_tags = array(
 			'a' => array(
 				'href' => array(),

@@ -1,13 +1,13 @@
-var FassbenderThemeModule = {};
-/* global Fassbender_settings */
+var medibazarThemeModule = {};
+/* global medibazar_settings */
 
 (function($) {
 
-	FassbenderThemeModule.$window = $(window);
+	medibazarThemeModule.$window = $(window);
 
-	FassbenderThemeModule.$document = $(document);
+	medibazarThemeModule.$document = $(document);
 
-	FassbenderThemeModule.$body = $('body');
+	medibazarThemeModule.$body = $('body');
 
 
 	

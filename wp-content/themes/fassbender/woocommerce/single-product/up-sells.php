@@ -24,7 +24,7 @@ if ( $upsells ) : ?>
 	<div class="container">
 		<section class="up-sells upsells products">
 			<?php
-			$heading = apply_filters( 'woocommerce_product_upsells_products_heading', esc_html__( 'You may also like&hellip;', 'Fassbender' ) );
+			$heading = apply_filters( 'woocommerce_product_upsells_products_heading', esc_html__( 'You may also like&hellip;', 'medibazar' ) );
 
 			if ( $heading ) :
 				?>

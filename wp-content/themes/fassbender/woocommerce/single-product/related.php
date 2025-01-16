@@ -26,7 +26,7 @@ if ( $related_products ) : ?>
 		<section class="related products">
 
 			<?php
-			$heading = apply_filters( 'woocommerce_product_related_products_heading', esc_html__( 'Related products', 'Fassbender' ) );
+			$heading = apply_filters( 'woocommerce_product_related_products_heading', esc_html__( 'Related products', 'medibazar' ) );
 			if ( $heading ) : ?>
 				<div class="row">
                     <div class="col-xl-12">

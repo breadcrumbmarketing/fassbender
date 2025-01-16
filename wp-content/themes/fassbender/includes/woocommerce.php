@@ -6,14 +6,14 @@
 
 if ( class_exists( 'woocommerce' ) ) {
 add_theme_support( 'woocommerce' );
-add_image_size('Fassbender-woo-product', 450, 450, true);
+add_image_size('medibazar-woo-product', 450, 450, true);
 
 // Remove woocommerce defauly styles
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 // hide default shop title anasayfadaki title gizlemek i�in
-add_filter('woocommerce_show_page_title', 'Fassbender_override_page_title');
-function Fassbender_override_page_title() {
+add_filter('woocommerce_show_page_title', 'medibazar_override_page_title');
+function medibazar_override_page_title() {
 return false;
 }
 
@@ -26,24 +26,24 @@ remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_l
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title',10);
 
-add_action( 'woocommerce_before_shop_loop_item', 'Fassbender_shop_thumbnail', 10);
+add_action( 'woocommerce_before_shop_loop_item', 'medibazar_shop_thumbnail', 10);
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 ); /*remove breadcrumb*/
 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products',20);
 remove_action( 'woocommerce_after_single_product', 'woocommerce_output_related_products',10);
-add_action( 'woocommerce_after_single_product_summary', 'Fassbender_related_products', 20);
+add_action( 'woocommerce_after_single_product_summary', 'medibazar_related_products', 20);
 
-function Fassbender_related_products(){
+function medibazar_related_products(){
     woocommerce_related_products( array('posts_per_page' => 3));
 }
 
 /*************************************************
 ## Product Badge
 *************************************************/
-add_action('woocommerce_product_thumbnails','Fassbender_sale_percentage',20);	
-function Fassbender_sale_percentage(){
+add_action('woocommerce_product_thumbnails','medibazar_sale_percentage',20);	
+function medibazar_sale_percentage(){
 	global $product;
 
 	$output = '';
@@ -67,10 +67,10 @@ function Fassbender_sale_percentage(){
 /*************************************************
 ## Wishlist Shortcode
 *************************************************/
-function Fassbender_wishlist_shortcode(){
+function medibazar_wishlist_shortcode(){
 	$output = '';
 	
-	$wishlist = get_theme_mod( 'Fassbender_wishlist_button', '0' );
+	$wishlist = get_theme_mod( 'medibazar_wishlist_button', '0' );
 	
 	if($wishlist == '1' && function_exists('run_tinv_wishlist')){
 	$output .= do_shortcode('[ti_wishlists_addtowishlist]');
@@ -83,9 +83,9 @@ function Fassbender_wishlist_shortcode(){
   Single Featured List
  ----------------------------*/
 
-add_action( 'woocommerce_single_product_summary', 'Fassbender_featured_list', 25);
-function Fassbender_featured_list(){
-	$featured = get_theme_mod( 'Fassbender_featured_listem' );
+add_action( 'woocommerce_single_product_summary', 'medibazar_featured_list', 25);
+function medibazar_featured_list(){
+	$featured = get_theme_mod( 'medibazar_featured_listem' );
 	$output = '';
 	
 	if( !empty( $featured ) ) {
@@ -98,20 +98,20 @@ function Fassbender_featured_list(){
 		$output .= '</ul></div>';
 	}
 	
-	echo Fassbender_sanitize_data($output);
+	echo medibazar_sanitize_data($output);
 }
 
 
-function Fassbender_product_image(){
+function medibazar_product_image(){
 	if (  (function_exists('has_post_thumbnail')) && (has_post_thumbnail())  ) {
 		$att=get_post_thumbnail_id();
 		$image_src = wp_get_attachment_image_src( $att, 'full' );
 		$image_src = $image_src[0];
 
-		$size = get_theme_mod( 'Fassbender_product_image_size', array( 'width' => '', 'height' => '') );
+		$size = get_theme_mod( 'medibazar_product_image_size', array( 'width' => '', 'height' => '') );
 
 		if($size['width'] && $size['height']){
-			$image = Fassbender_resize( $image_src, $size['width'], $size['height'], true, true, true );  
+			$image = medibazar_resize( $image_src, $size['width'], $size['height'], true, true, true );  
 		} else {
 			$image = $image_src;
 		}
@@ -125,7 +125,7 @@ function Fassbender_product_image(){
 /*************************************************
 ## Re-order WooCommerce Single Product Summary
 *************************************************/
-$reorder_single = get_theme_mod( 'Fassbender_shop_single_reorder', 
+$reorder_single = get_theme_mod( 'medibazar_shop_single_reorder', 
 	array( 
 		'woocommerce_template_single_title', 
 		'woocommerce_template_single_rating', 
@@ -133,7 +133,7 @@ $reorder_single = get_theme_mod( 'Fassbender_shop_single_reorder',
 		'woocommerce_template_single_excerpt', 
 		'woocommerce_template_single_add_to_cart', 
 		'woocommerce_template_single_meta', 
-		'Fassbender_social_share', 
+		'medibazar_social_share', 
 		
 	) 
 );
@@ -145,7 +145,7 @@ if($reorder_single){
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-	remove_action( 'woocommerce_single_product_summary', 'Fassbender_social_share', 70);
+	remove_action( 'woocommerce_single_product_summary', 'medibazar_social_share', 70);
 	
 	$count = 7;
 	
@@ -161,7 +161,7 @@ if($reorder_single){
 /*----------------------------
   Product Type 1
  ----------------------------*/
-function Fassbender_product_type1(){
+function medibazar_product_type1(){
 	global $product;
 	global $post;
 	global $woocommerce;
@@ -177,10 +177,10 @@ function Fassbender_product_type1(){
 	$image_src = $image_src[0];
 	}
 
-	$size = get_theme_mod( 'Fassbender_product_image_size', array( 'width' => '', 'height' => '') );
+	$size = get_theme_mod( 'medibazar_product_image_size', array( 'width' => '', 'height' => '') );
 
 	if($size['width'] && $size['height']){
-		$imageresize = Fassbender_resize( $image_src, $size['width'], $size['height'], true, true, true );  
+		$imageresize = medibazar_resize( $image_src, $size['width'], $size['height'], true, true, true );  
 	} else {
 		$imageresize = $image_src;
 	}
@@ -192,13 +192,13 @@ function Fassbender_product_type1(){
 	$stock_text = $product->get_availability();
 	$rating = wc_get_rating_html($product->get_average_rating());
 	$ratingcount = $product->get_review_count();
-	$wishlist = get_theme_mod( 'Fassbender_wishlist_button', '0' );
-	$compare = get_theme_mod( 'Fassbender_compare_button', '0' );
-	$quickview = get_theme_mod( 'Fassbender_quick_view_button', '0' );
+	$wishlist = get_theme_mod( 'medibazar_wishlist_button', '0' );
+	$compare = get_theme_mod( 'medibazar_compare_button', '0' );
+	$quickview = get_theme_mod( 'medibazar_quick_view_button', '0' );
 
 	$postview  = isset( $_POST['shop_view'] ) ? $_POST['shop_view'] : '';
 	
-	if(Fassbender_shop_view() == 'list_view' || get_theme_mod('Fassbender_view_type') == 'list-view' || $postview == 'list_view' && Fassbender_shop_view() != 'grid_view') { 
+	if(medibazar_shop_view() == 'list_view' || get_theme_mod('medibazar_view_type') == 'list-view' || $postview == 'list_view' && medibazar_shop_view() != 'grid_view') { 
 		$output .= '<div class="row klb-product">';
 		$output .= '<div class="col-xl-4 col-lg-4 ">';
 		$output .= '<div class="product mb-30">';
@@ -213,12 +213,12 @@ function Fassbender_product_type1(){
 		$output .= '<h4><a href="'.get_permalink().'" title="'.the_title_attribute( 'echo=0' ).'">'.get_the_title().'</a></h4>';
 		$output .= '<span>'.$price.'</span>';
 		$output .= '</div>';
-		$output .= '<p>'.Fassbender_limit_words(get_the_excerpt(), '30').'</p>';
+		$output .= '<p>'.medibazar_limit_words(get_the_excerpt(), '30').'</p>';
 		$output .= '<div class="product-action product-02-action">';
 		
-		$output .= Fassbender_wishlist_shortcode();
+		$output .= medibazar_wishlist_shortcode();
 		
-		$output .= Fassbender_add_to_cart_button();	
+		$output .= medibazar_add_to_cart_button();	
 
 		$output .= '</div>';
 		$output .= '</div>';
@@ -238,13 +238,13 @@ function Fassbender_product_type1(){
 		}
 		$output .= '<div class="product-02-img pos-rel">';
 		$output .= '<a href="'.get_permalink().'">';
-		$output .= '<img src="'.Fassbender_product_image().'" alt="product_img1">';
+		$output .= '<img src="'.medibazar_product_image().'" alt="product_img1">';
 		$output .= '</a>';
 		$output .= '<div class="product-action">';
 		
-		$output .= Fassbender_wishlist_shortcode();
+		$output .= medibazar_wishlist_shortcode();
 		
-		$output .= Fassbender_add_to_cart_button();
+		$output .= medibazar_add_to_cart_button();
 		if($quickview == '1'){
 		$output .= '<a href="'.$product->get_id().'" class="action-btn button detail-bnt"><i class="far fa-search"></i></a>';
 		}
@@ -264,7 +264,7 @@ function Fassbender_product_type1(){
 /*----------------------------
   Product Type 2
  ----------------------------*/
-function Fassbender_product_type2(){
+function medibazar_product_type2(){
 	global $product;
 	global $post;
 	global $woocommerce;
@@ -277,7 +277,7 @@ function Fassbender_product_type2(){
 	$att=get_post_thumbnail_id();
 	$image_src = wp_get_attachment_image_src( $att, 'full' );
 	$image_src = $image_src[0];
-	$imageresize = Fassbender_resize( $image_src, 304, 173, true, true, true );
+	$imageresize = medibazar_resize( $image_src, 304, 173, true, true, true );
 
 	$cart_url = wc_get_cart_url();
 	$price = $allproduct->get_price_html();
@@ -286,9 +286,9 @@ function Fassbender_product_type2(){
 	$stock_text = $product->get_availability();
 	$rating = wc_get_rating_html($product->get_average_rating());
 	$ratingcount = $product->get_review_count();
-	$wishlist = get_theme_mod( 'Fassbender_wishlist_button', '0' );
-	$compare = get_theme_mod( 'Fassbender_compare_button', '0' );
-	$quickview = get_theme_mod( 'Fassbender_quick_view_button', '0' );
+	$wishlist = get_theme_mod( 'medibazar_wishlist_button', '0' );
+	$compare = get_theme_mod( 'medibazar_compare_button', '0' );
+	$quickview = get_theme_mod( 'medibazar_quick_view_button', '0' );
 			
 	$output .= '<div class="klb-product2 product_box text-center">';
 	$output .= '<div class="product_img">';
@@ -304,7 +304,7 @@ function Fassbender_product_type2(){
 	$output .= '<li><a href="'.$product->get_id().'" class="button detail-bnt"><i class="icon-magnifier-add"></i></a></li>';
 	}
 	
-	$output .= Fassbender_wishlist_shortcode();
+	$output .= medibazar_wishlist_shortcode();
 	
 	$output .= '</ul>';
 	$output .= '</div>';
@@ -325,7 +325,7 @@ function Fassbender_product_type2(){
 	$output .= '</div>';
 	$output .= '<div class="list_product_action_box">';
 	$output .= '<ul class="list_none pr_action_btn">';
-	$output .= '<li class="add-to-cart">'.Fassbender_add_to_cart_button().'</li>';
+	$output .= '<li class="add-to-cart">'.medibazar_add_to_cart_button().'</li>';
 	if($compare == '1'){
 	$output .= '<li>'.do_shortcode('[yith_compare_button]').'</li>';
 	}
@@ -333,13 +333,13 @@ function Fassbender_product_type2(){
 	$output .= '<li><a href="'.$product->get_id().'" class="button detail-bnt"><i class="icon-magnifier-add"></i></a></li>';
 	}
 	
-	$output .= Fassbender_wishlist_shortcode();
+	$output .= medibazar_wishlist_shortcode();
 	
 	$output .= '</ul>';
 	$output .= '</div>';
 	
 	$output .= '<div class="add-to-cart">';
-	$output .= Fassbender_add_to_cart_button();
+	$output .= medibazar_add_to_cart_button();
 	$output .= '</div>';
 	$output .= '</div>';
 	$output .= '</div>';
@@ -351,20 +351,20 @@ function Fassbender_product_type2(){
 /*----------------------------
   Add my owns
  ----------------------------*/
-function Fassbender_shop_thumbnail () {
+function medibazar_shop_thumbnail () {
 	
 
-	if(get_theme_mod('Fassbender_product_type') == 'type3'){
+	if(get_theme_mod('medibazar_product_type') == 'type3'){
 		
-		echo Fassbender_product_type3();
+		echo medibazar_product_type3();
 
-	}elseif(get_theme_mod('Fassbender_product_type') == 'type2'){
+	}elseif(get_theme_mod('medibazar_product_type') == 'type2'){
 		
-		echo Fassbender_product_type2();
+		echo medibazar_product_type2();
 		
 	} else {
 		
-		echo Fassbender_product_type1();
+		echo medibazar_product_type1();
 		
 	}
 
@@ -375,7 +375,7 @@ function Fassbender_shop_thumbnail () {
 *************************************************/
 
 //add to cart button
-function Fassbender_add_to_cart_button(){
+function medibazar_add_to_cart_button(){
 	global $product;
 	$output = '';
 
@@ -392,7 +392,7 @@ function Fassbender_add_to_cart_button(){
 	}
 	
 	if($product->get_type() == 'variable' && empty($output)){
-		$output = "<a class='btn btn-primary add-to-cart cart-hover' href='".get_permalink($product->id)."'>".esc_html__('Select options','Fassbender')."</a>";
+		$output = "<a class='btn btn-primary add-to-cart cart-hover' href='".get_permalink($product->id)."'>".esc_html__('Select options','medibazar')."</a>";
 	}
 
 	if($product->get_type() == 'simple'){
@@ -410,13 +410,13 @@ function Fassbender_add_to_cart_button(){
 ## Woo Cart Ajax
 *************************************************/ 
 
-add_filter('woocommerce_add_to_cart_fragments', 'Fassbender_header_add_to_cart_fragment');
-function Fassbender_header_add_to_cart_fragment( $fragments ) {
+add_filter('woocommerce_add_to_cart_fragments', 'medibazar_header_add_to_cart_fragment');
+function medibazar_header_add_to_cart_fragment( $fragments ) {
 	global $woocommerce;
 	ob_start();
 	?>
 	
-	<span class="cart-count"> <?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'Fassbender'), $woocommerce->cart->cart_contents_count);?> </span>
+	<span class="cart-count"> <?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'medibazar'), $woocommerce->cart->cart_contents_count);?> </span>
 	
 
 	<?php
@@ -441,15 +441,15 @@ add_filter( 'woocommerce_add_to_cart_fragments', function($fragments) {
 } );
 
 /*************************************************
-## Fassbender Woo Search Form
+## medibazar Woo Search Form
 *************************************************/ 
 
-add_filter( 'get_product_search_form' , 'Fassbender_custom_product_searchform' );
+add_filter( 'get_product_search_form' , 'medibazar_custom_product_searchform' );
 
-function Fassbender_custom_product_searchform( $form ) {
+function medibazar_custom_product_searchform( $form ) {
 
 	$form = '<form class="header-search-form" action="' . esc_url( home_url( '/'  ) ) . '" role="search" method="get" id="searchform">
-				<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search','Fassbender').'">
+				<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search','medibazar').'">
 				<button type="submit"><i class="far fa-search"></i></button>
                 <input type="hidden" name="post_type" value="product" />
 			</form>';
@@ -457,10 +457,10 @@ function Fassbender_custom_product_searchform( $form ) {
 	return $form;
 }
 
-function Fassbender_header_product_search() {
+function medibazar_header_product_search() {
 
 	$form = '<form class="header-search-form" action="' . esc_url( home_url( '/'  ) ) . '" role="search" method="get" id="searchform">
-				<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Suche','Fassbender').'">
+				<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Suche','medibazar').'">
 				<button type="submit"><i class="far fa-search"></i></button>
                 <input type="hidden" name="post_type" value="product" />
 			</form>';
@@ -473,7 +473,7 @@ function Fassbender_header_product_search() {
 
 
 /*************************************************
-## Fassbender Gallery Thumbnail Size
+## medibazar Gallery Thumbnail Size
 *************************************************/ 
 add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
     return array(
@@ -488,22 +488,22 @@ add_filter( 'woocommerce_get_image_size_gallery_thumbnail', function( $size ) {
 ## Quick View Scripts
 *************************************************/ 
 
-function Fassbender_quick_view_scripts() {
-  	wp_enqueue_script( 'Fassbender-quick-ajax', get_template_directory_uri() . '/assets/js/custom/quick_ajax.js', array('jquery'), '1.0.0', true );
-	wp_localize_script( 'Fassbender-quick-ajax', 'MyAjax', array(
+function medibazar_quick_view_scripts() {
+  	wp_enqueue_script( 'medibazar-quick-ajax', get_template_directory_uri() . '/assets/js/custom/quick_ajax.js', array('jquery'), '1.0.0', true );
+	wp_localize_script( 'medibazar-quick-ajax', 'MyAjax', array(
 		'ajaxurl' => esc_url(admin_url( 'admin-ajax.php' )),
 	));
   
 }
-add_action( 'wp_enqueue_scripts', 'Fassbender_quick_view_scripts' );
+add_action( 'wp_enqueue_scripts', 'medibazar_quick_view_scripts' );
 
 /*************************************************
 ## Quick View CallBack
 *************************************************/ 
 
-add_action( 'wp_ajax_nopriv_quick_view', 'Fassbender_quick_view_callback' );
-add_action( 'wp_ajax_quick_view', 'Fassbender_quick_view_callback' );
-function Fassbender_quick_view_callback() {
+add_action( 'wp_ajax_nopriv_quick_view', 'medibazar_quick_view_callback' );
+add_action( 'wp_ajax_quick_view', 'medibazar_quick_view_callback' );
+function medibazar_quick_view_callback() {
 
 	global $wpdb,$post; // this is how you get access to the database
 	$id = intval( $_POST['id'] );
@@ -637,9 +637,9 @@ function Fassbender_quick_view_callback() {
 }
 
 /*************************************************
-## Fassbender Filter by Attribute
+## medibazar Filter by Attribute
 *************************************************/ 
-function Fassbender_woocommerce_layered_nav_term_html( $term_html, $term, $link, $count ) { 
+function medibazar_woocommerce_layered_nav_term_html( $term_html, $term, $link, $count ) { 
 
 	$attribute_label_name = wc_attribute_label($term->taxonomy);;
 	$attribute_id = wc_attribute_taxonomy_id_by_name($attribute_label_name);
@@ -658,24 +658,24 @@ function Fassbender_woocommerce_layered_nav_term_html( $term_html, $term, $link,
     return $term_html; 
 }; 
          
-add_filter( 'woocommerce_layered_nav_term_html', 'Fassbender_woocommerce_layered_nav_term_html', 10, 4 ); 
+add_filter( 'woocommerce_layered_nav_term_html', 'medibazar_woocommerce_layered_nav_term_html', 10, 4 ); 
 
 
 /*************************************************
 ## Stock Availability Translation
 *************************************************/ 
 
-if(get_theme_mod('Fassbender_stock_quantity',0) != 1){
-add_filter( 'woocommerce_get_availability', 'Fassbender_custom_get_availability', 1, 2);
-	function Fassbender_custom_get_availability( $availability, $_product ) {
+if(get_theme_mod('medibazar_stock_quantity',0) != 1){
+add_filter( 'woocommerce_get_availability', 'medibazar_custom_get_availability', 1, 2);
+	function medibazar_custom_get_availability( $availability, $_product ) {
 		
 		// Change In Stock Text
 		if ( $_product->is_in_stock() ) {
-			$availability['availability'] = esc_html__('In Stock', 'Fassbender');
+			$availability['availability'] = esc_html__('In Stock', 'medibazar');
 		}
 		// Change Out of Stock Text
 		if ( ! $_product->is_in_stock() ) {
-			$availability['availability'] = esc_html__('Out of stock', 'Fassbender');
+			$availability['availability'] = esc_html__('Out of stock', 'medibazar');
 		}
 		return $availability;
 	}
@@ -684,19 +684,19 @@ add_filter( 'woocommerce_get_availability', 'Fassbender_custom_get_availability'
 /*************************************************
 ## Archive Description After Content
 *************************************************/
-if(get_theme_mod('Fassbender_category_description_after_content',0) == 1){
+if(get_theme_mod('medibazar_category_description_after_content',0) == 1){
 	remove_action('woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
 	remove_action('woocommerce_archive_description', 'woocommerce_product_archive_description', 10);
-	add_action('Fassbender_after_main_shop', 'woocommerce_taxonomy_archive_description', 5);
-	add_action('Fassbender_after_main_shop', 'woocommerce_product_archive_description', 5);
+	add_action('medibazar_after_main_shop', 'woocommerce_taxonomy_archive_description', 5);
+	add_action('medibazar_after_main_shop', 'woocommerce_product_archive_description', 5);
 }
 
 /*************************************************
 ## Catalog Mode - Disable Add to cart Button
 *************************************************/
-if(get_theme_mod('Fassbender_catalog_mode', 0) == 1 || Fassbender_get_option() == 'catalogmode'){ 
-	add_filter( 'woocommerce_loop_add_to_cart_link', 'Fassbender_remove_add_to_cart_buttons', 1 );
-	function Fassbender_remove_add_to_cart_buttons() {
+if(get_theme_mod('medibazar_catalog_mode', 0) == 1 || medibazar_get_option() == 'catalogmode'){ 
+	add_filter( 'woocommerce_loop_add_to_cart_link', 'medibazar_remove_add_to_cart_buttons', 1 );
+	function medibazar_remove_add_to_cart_buttons() {
 		return false;
 	}
 }

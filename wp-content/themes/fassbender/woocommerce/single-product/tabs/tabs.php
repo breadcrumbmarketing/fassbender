@@ -33,7 +33,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 	<div class="container">
 		<div class="row">
 		
-			<?php if(get_theme_mod('Fassbender_shop_single_banner_toggle')){ ?>
+			<?php if(get_theme_mod('medibazar_shop_single_banner_toggle')){ ?>
 			
 				<div class="col-xl-8 col-lg-8 mb-30">
 					<div class="woocommerce-tabs wc-tabs-wrapper">
@@ -63,10 +63,10 @@ if ( ! empty( $product_tabs ) ) : ?>
 				</div>
 				<div class="col-xl-4 col-lg-4">
 					<div class="product-desc-imgmb-30">
-						<?php $bannerimage = get_theme_mod( 'Fassbender_shop_single_banner_img'); ?>
+						<?php $bannerimage = get_theme_mod( 'medibazar_shop_single_banner_img'); ?>
 						<?php if($bannerimage){ ?>
-							<a href="<?php echo esc_url(get_theme_mod('Fassbender_shop_single_banner_url')); ?>">
-								<img src="<?php echo esc_url( wp_get_attachment_url(get_theme_mod( 'Fassbender_shop_single_banner_img' )) ); ?>" alt="<?php esc_attr_e('banner','Fassbender'); ?>">
+							<a href="<?php echo esc_url(get_theme_mod('medibazar_shop_single_banner_url')); ?>">
+								<img src="<?php echo esc_url( wp_get_attachment_url(get_theme_mod( 'medibazar_shop_single_banner_img' )) ); ?>" alt="<?php esc_attr_e('banner','medibazar'); ?>">
 							</a>
 						<?php } ?>
 					</div>

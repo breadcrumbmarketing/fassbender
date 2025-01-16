@@ -27,11 +27,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<thead>
 				<tr>
 					<th class="product-thumbnail">&nbsp;</th>
-					<th class="product-name"><?php esc_html_e( 'Product', 'Fassbender' ); ?></th>
-					<th class="product-price"><?php esc_html_e( 'Price', 'Fassbender' ); ?></th>
-					<th class="product-quantity"><?php esc_html_e( 'Quantity', 'Fassbender' ); ?></th>
-					<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'Fassbender' ); ?></th>
-					<th class="product-remove"><?php esc_html_e('Remove','Fassbender'); ?></th>
+					<th class="product-name"><?php esc_html_e( 'Product', 'medibazar' ); ?></th>
+					<th class="product-price"><?php esc_html_e( 'Price', 'medibazar' ); ?></th>
+					<th class="product-quantity"><?php esc_html_e( 'Quantity', 'medibazar' ); ?></th>
+					<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'medibazar' ); ?></th>
+					<th class="product-remove"><?php esc_html_e('Remove','medibazar'); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,14 +63,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 							$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 
 							if ( ! $product_permalink ) {
-								echo Fassbender_sanitize_data($thumbnail); // PHPCS: XSS ok.
+								echo medibazar_sanitize_data($thumbnail); // PHPCS: XSS ok.
 							} else {
 								printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
 							}
 							?>
 							</td>
 
-							<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'Fassbender' ); ?>">
+							<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'medibazar' ); ?>">
 							<?php
 							if ( ! $product_permalink ) {
 								echo wp_kses_post( $product_name . '&nbsp;' );
@@ -90,18 +90,18 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 							// Backorder notification.
 							if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'Fassbender' ) . '</p>', $product_id ) );
+								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'medibazar' ) . '</p>', $product_id ) );
 							}
 							?>
 							</td>
 
-							<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'Fassbender' ); ?>">
+							<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'medibazar' ); ?>">
 								<?php
 									echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 								?>
 							</td>
 
-							<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'Fassbender' ); ?>">
+							<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'medibazar' ); ?>">
 							<?php
 							if ( $_product->is_sold_individually() ) {
 								$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
@@ -123,7 +123,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 							?>
 							</td>
 
-							<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'Fassbender' ); ?>">
+							<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'medibazar' ); ?>">
 								<?php
 									echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 								?>
@@ -137,7 +137,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 											'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="fa fa-times"></i></a>',
 											esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 											/* translators: %s is the product name */
-											esc_attr( sprintf( __( 'Remove %s from cart', 'Fassbender' ), wp_strip_all_tags( $product_name ) ) ),
+											esc_attr( sprintf( __( 'Remove %s from cart', 'medibazar' ), wp_strip_all_tags( $product_name ) ) ),
 											esc_attr( $product_id ),
 											esc_attr( $_product->get_sku() )
 										),
@@ -158,15 +158,15 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						<?php if ( wc_coupons_enabled() ) { ?>
 							<div class="coupon">
-								<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'Fassbender' ); ?></label> 
-								<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'Fassbender' ); ?>" /> 
-								<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'Fassbender' ); ?>"><?php esc_html_e( 'Apply coupon', 'Fassbender' ); ?></button>
+								<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'medibazar' ); ?></label> 
+								<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'medibazar' ); ?>" /> 
+								<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'medibazar' ); ?>"><?php esc_html_e( 'Apply coupon', 'medibazar' ); ?></button>
 								<?php do_action( 'woocommerce_cart_coupon' ); ?>
 							</div>
 						<?php } ?>
 
-						<button type="submit" class="update-cart button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'Fassbender' ); ?>">
-							<?php esc_html_e( 'Update cart', 'Fassbender' ); ?>
+						<button type="submit" class="update-cart button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'medibazar' ); ?>">
+							<?php esc_html_e( 'Update cart', 'medibazar' ); ?>
 						</button>
 
 						<?php do_action( 'woocommerce_cart_actions' ); ?>

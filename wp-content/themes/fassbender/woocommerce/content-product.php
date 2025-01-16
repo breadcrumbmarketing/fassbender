@@ -35,9 +35,9 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
    <?php $column = '4'; ?>
 <?php } ?>
 
-<?php if(get_theme_mod( 'Fassbender_shop_mobile_column' ) == '3columns'){ ?>
+<?php if(get_theme_mod( 'medibazar_shop_mobile_column' ) == '3columns'){ ?>
    <?php $mobilecolumn = '4'; ?>
-<?php } elseif(get_theme_mod( 'Fassbender_shop_mobile_column' ) == '2columns'){ ?>
+<?php } elseif(get_theme_mod( 'medibazar_shop_mobile_column' ) == '2columns'){ ?>
    <?php $mobilecolumn = '6'; ?>
 <?php } else { ?>
    <?php $mobilecolumn = '12'; ?>
@@ -45,7 +45,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 
 <?php $postview  = isset( $_POST['shop_view'] ) ? $_POST['shop_view'] : ''; ?>
 
-<?php if(Fassbender_shop_view() == 'list_view' || get_theme_mod('Fassbender_view_type') == 'list-view' || $postview == 'list_view' && Fassbender_shop_view() != 'grid_view') { ?>
+<?php if(medibazar_shop_view() == 'list_view' || get_theme_mod('medibazar_view_type') == 'list-view' || $postview == 'list_view' && medibazar_shop_view() != 'grid_view') { ?>
 	<div <?php wc_product_class( 'klb-product col-12 col-md-12', $product ); ?>>
 <?php } else { ?>
 	<div <?php wc_product_class( 'klb-product col-xl-'.esc_attr($column).' cl-lg-'.esc_attr($column).' col-'.$mobilecolumn.' col-md-6', $product ); ?>>

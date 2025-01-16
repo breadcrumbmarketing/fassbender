@@ -1,4 +1,4 @@
-<?php $headercart = get_theme_mod('Fassbender_header_cart','0'); ?>
+<?php $headercart = get_theme_mod('medibazar_header_cart','0'); ?>
 <?php if($headercart == '1'){ ?>
 
 	<div class="header-lang f-right pos-rel d-none d-md-none d-lg-block">
@@ -10,8 +10,8 @@
 				<a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
 				<div class="items-cart-inner">
 				  <div class="basket"> <i class="fal fa-shopping-cart"></i> </div>
-				  <div class="basket-item-count"><span class="cart-count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'Fassbender'), $woocommerce->cart->cart_contents_count);?></span></div>
-				  <div class="total-price-basket"> <span class="lbl"><?php esc_html_e('Zum Warenkorb','Fassbender'); ?></span>  </div>
+				  <div class="basket-item-count"><span class="cart-count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'medibazar'), $woocommerce->cart->cart_contents_count);?></span></div>
+				  <div class="total-price-basket"> <span class="lbl"><?php esc_html_e('Zum Warenkorb','medibazar'); ?></span>  </div>
 				</div>
 				</a>
 				<div class="dropdown-menu">

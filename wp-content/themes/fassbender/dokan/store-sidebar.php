@@ -12,19 +12,19 @@
                 );
 
                 if ( dokan()->widgets->is_exists( 'store_category_menu' ) ) {
-                    the_widget( dokan()->widgets->store_category_menu, array( 'title' => esc_html__( 'Store Product Category', 'Fassbender' ) ), $args );
+                    the_widget( dokan()->widgets->store_category_menu, array( 'title' => esc_html__( 'Store Product Category', 'medibazar' ) ), $args );
                 }
 
                 if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) {
-                    the_widget( dokan()->widgets->store_location, array( 'title' => esc_html__( 'Store Location', 'Fassbender' ) ), $args );
+                    the_widget( dokan()->widgets->store_location, array( 'title' => esc_html__( 'Store Location', 'medibazar' ) ), $args );
                 }
 
                 if ( dokan()->widgets->is_exists( 'store_open_close' ) && dokan_get_option( 'store_open_close', 'dokan_general', 'on' ) == 'on' ) {
-                    the_widget( dokan()->widgets->store_open_close, array( 'title' => esc_html__( 'Store Time', 'Fassbender' ) ), $args );
+                    the_widget( dokan()->widgets->store_open_close, array( 'title' => esc_html__( 'Store Time', 'medibazar' ) ), $args );
                 }
 
                 if ( dokan()->widgets->is_exists( 'store_contact_form' ) && dokan_get_option( 'contact_seller', 'dokan_general', 'on' ) == 'on' ) {
-                    the_widget( dokan()->widgets->store_contact_form, array( 'title' => esc_html__( 'Contact Vendor', 'Fassbender' ) ), $args );
+                    the_widget( dokan()->widgets->store_contact_form, array( 'title' => esc_html__( 'Contact Vendor', 'medibazar' ) ), $args );
                 }
             }
             ?>

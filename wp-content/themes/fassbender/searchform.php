@@ -2,14 +2,14 @@
 /**
  * searchform.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.0
+ * @subpackage medibazar
+ * @since medibazar 1.0
  * 
  */
  ?>
 <div class="search_form">
 	<form class="search-form" id="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get"> 
-		<input type="text" name="s" placeholder="<?php esc_attr_e('Search...', 'Fassbender') ?>" autocomplete="off">
+		<input type="text" name="s" placeholder="<?php esc_attr_e('Search...', 'medibazar') ?>" autocomplete="off">
 		<button type="submit" title="Subscribe" class="btn icon_search" name="submit" value="Submit">
 			<i class="fas fa-search"></i>
 		</button>

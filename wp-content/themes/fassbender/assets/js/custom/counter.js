@@ -1,11 +1,11 @@
 (function ($) {
   "use strict";
 
-	$(document).on('FassbenderShopPageInit', function () {
-		FassbenderThemeModule.counter();
+	$(document).on('medibazarShopPageInit', function () {
+		medibazarThemeModule.counter();
 	});
 
-	FassbenderThemeModule.counter = function() {
+	medibazarThemeModule.counter = function() {
       const countdown = document.querySelectorAll( '.countdown' );
 
       if ( countdown !== null ) {
@@ -49,7 +49,7 @@
 	}
 	
 	$(document).ready(function() {
-		FassbenderThemeModule.counter();
+		medibazarThemeModule.counter();
 	});
 
 })(jQuery);

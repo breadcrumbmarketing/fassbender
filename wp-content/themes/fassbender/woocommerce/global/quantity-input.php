@@ -21,13 +21,13 @@
 defined( 'ABSPATH' ) || exit;
 
 /* translators: %s: Quantity. */
-$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'Fassbender' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'Fassbender' );
+$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'medibazar' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'medibazar' );
 
 ?>
 
 <?php
-	wp_enqueue_script( 'Fassbender-plus-minus'); 
-	wp_localize_script('Fassbender-plus-minus', 'quantityklb' , 
+	wp_enqueue_script( 'medibazar-plus-minus'); 
+	wp_localize_script('medibazar-plus-minus', 'quantityklb' , 
 	array( 
 		"maxklb" => 0 < $max_value ? $max_value : '',
 	));

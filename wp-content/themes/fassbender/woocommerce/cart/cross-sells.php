@@ -21,7 +21,7 @@ if ( $cross_sells ) : ?>
 
 	<div class="cross-sells">
 		<?php
-		$heading = apply_filters( 'woocommerce_product_cross_sells_products_heading', esc_html__( 'You may be interested in&hellip;', 'Fassbender' ) );
+		$heading = apply_filters( 'woocommerce_product_cross_sells_products_heading', esc_html__( 'You may be interested in&hellip;', 'medibazar' ) );
 
 		if ( $heading ) :
 			?>

@@ -869,7 +869,7 @@ class Merlin {
 	 * Theme EDD license step.
 	 */
 	protected function license() {
-        if(Fassbender_get_registered_purchase_code()) {
+        if(medibazar_get_registered_purchase_code()) {
             wp_safe_redirect(home_url().'/wp-admin/themes.php?page=merlin&step=plugins');
         }
 

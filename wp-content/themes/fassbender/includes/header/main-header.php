@@ -4,10 +4,10 @@
 ## Main Header Function
 *************************************************/
 
-add_action('Fassbender_main_header','Fassbender_main_header_function',10);
+add_action('medibazar_main_header','medibazar_main_header_function',10);
 
-if ( ! function_exists( 'Fassbender_main_header_function' ) ) {
-	function Fassbender_main_header_function(){
+if ( ! function_exists( 'medibazar_main_header_function' ) ) {
+	function medibazar_main_header_function(){
 		
 ?>
 
@@ -19,13 +19,13 @@ if ( ! function_exists( 'Fassbender_main_header_function' ) ) {
 				<div class="row align-items-center">
 					<div class="col-xl-3 col-lg-3">
 						<div class="logo">
-							<?php if (get_theme_mod( 'Fassbender_logo' )) { ?>
+							<?php if (get_theme_mod( 'medibazar_logo' )) { ?>
 								<a href="<?php echo esc_url( home_url( "/" ) ); ?>" title="<?php bloginfo("name"); ?>">
-									<img class="logo_dark" src="<?php echo esc_url( wp_get_attachment_url(get_theme_mod( 'Fassbender_logo' )) ); ?>"  alt="<?php bloginfo("name"); ?>">
+									<img class="logo_dark" src="<?php echo esc_url( wp_get_attachment_url(get_theme_mod( 'medibazar_logo' )) ); ?>"  alt="<?php bloginfo("name"); ?>">
 								</a>
-							<?php } elseif (get_theme_mod( 'Fassbender_logo_text' )) { ?>
+							<?php } elseif (get_theme_mod( 'medibazar_logo_text' )) { ?>
 								<a class="navbar-brand text" href="<?php echo esc_url( home_url( "/" ) ); ?>" title="<?php bloginfo("name"); ?>">
-									<span><?php echo esc_html(get_theme_mod( 'Fassbender_logo_text' )); ?></span>
+									<span><?php echo esc_html(get_theme_mod( 'medibazar_logo_text' )); ?></span>
 								</a>
 							<?php } else { ?>
 								<a href="<?php echo esc_url( home_url( "/" ) ); ?>" title="<?php bloginfo("name"); ?>">
@@ -39,7 +39,7 @@ if ( ! function_exists( 'Fassbender_main_header_function' ) ) {
 						
 							<?php get_template_part( 'includes/header/cart' ); ?>
 							
-							<?php $sidebarmenu = get_theme_mod('Fassbender_header_sidebar_menu','0'); ?>
+							<?php $sidebarmenu = get_theme_mod('medibazar_header_sidebar_menu','0'); ?>
 							<?php if($sidebarmenu == '1'){ ?>
 							<div class="menu-bar info-bar f-right d-none d-md-none d-lg-block">
 								<a href="#"><i class="fal fa-bars"></i></a>
@@ -59,7 +59,7 @@ if ( ! function_exists( 'Fassbender_main_header_function' ) ) {
 								   'menu_id' => '',
 								   'menu_class' => '',
 								   'echo' => true,
-									"walker" => new Fassbender_description_walker(),
+									"walker" => new medibazar_description_walker(),
 								   'depth' => 0 
 									)); 
 								 ?>

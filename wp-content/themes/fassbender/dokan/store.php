@@ -57,7 +57,7 @@ if ( function_exists( 'yoast_breadcrumb' ) ) {
 
 							<?php } else { ?>
 
-								<p class="dokan-info"><?php esc_html_e( 'No products were found of this vendor!', 'Fassbender' ); ?></p>
+								<p class="dokan-info"><?php esc_html_e( 'No products were found of this vendor!', 'medibazar' ); ?></p>
 
 							<?php } ?>
 						</div>

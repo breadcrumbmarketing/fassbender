@@ -1,10 +1,10 @@
-/* global Fassbender_settings */
+/* global medibazar_settings */
 (function($) {
-	FassbenderThemeModule.$document.on('FassbenderShopPageInit', function() {
-		FassbenderThemeModule.sortByWidget();
+	medibazarThemeModule.$document.on('medibazarShopPageInit', function() {
+		medibazarThemeModule.sortByWidget();
 	});
 
-	FassbenderThemeModule.sortByWidget = function() {
+	medibazarThemeModule.sortByWidget = function() {
 		var $wcOrdering = $('.woocommerce-ordering');
 
 		$wcOrdering.on('change', 'select.orderby', function() {
@@ -13,7 +13,7 @@
 
 			$.pjax({
 				container: 'main',
-				timeout  : Fassbender_settings.pjax_timeout,
+				timeout  : medibazar_settings.pjax_timeout,
 				url      : '?' + $form.serialize(),
 				scrollTo : false,
 				renderCallback: function(context, html, afterRender) {
@@ -29,6 +29,6 @@
 	};
 
 	$(document).ready(function() {
-		FassbenderThemeModule.sortByWidget();
+		medibazarThemeModule.sortByWidget();
 	});
 })(jQuery);

@@ -2,8 +2,8 @@
 /**
  * header.php
  * @package WordPress
- * @subpackage Fassbender
- * @since Fassbender 1.0
+ * @subpackage medibazar
+ * @since medibazar 1.0
  * 
  */
  ?>
@@ -21,24 +21,24 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<?php if (!get_theme_mod( 'Fassbender_preloader' )) { ?>
+<?php if (!get_theme_mod( 'medibazar_preloader' )) { ?>
 <div id="preloader"></div>
 <?php } ?>
 
-	<?php Fassbender_do_action( 'Fassbender_before_main_header'); ?>
+	<?php medibazar_do_action( 'medibazar_before_main_header'); ?>
 	
 	<?php if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) { ?>
 		<?php
         /**
-        * Hook: Fassbender_main_header
+        * Hook: medibazar_main_header
         *
-        * @hooked Fassbender_main_header_function - 10
+        * @hooked medibazar_main_header_function - 10
         */
-        do_action( 'Fassbender_main_header' );
+        do_action( 'medibazar_main_header' );
 	
 		?>
 	<?php } ?>
 	
-	<?php Fassbender_do_action( 'Fassbender_after_main_header'); ?>
+	<?php medibazar_do_action( 'medibazar_after_main_header'); ?>
 
 	<main>

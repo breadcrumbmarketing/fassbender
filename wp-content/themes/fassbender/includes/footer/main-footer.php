@@ -1,12 +1,12 @@
 <?php
-if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
-	function Fassbender_main_footer_function(){
+if ( ! function_exists( 'medibazar_main_footer_function' ) ) {
+	function medibazar_main_footer_function(){
 		
 	?>
-			<?php if(get_theme_mod('Fassbender_top_footer_text')){ ?>
+			<?php if(get_theme_mod('medibazar_top_footer_text')){ ?>
 				<div class="instagram-area pl-130 pr-130">
 					<div class="container-fluid">
-						<?php echo do_shortcode('['.get_theme_mod('Fassbender_top_footer_text').']'); ?>
+						<?php echo do_shortcode('['.get_theme_mod('medibazar_top_footer_text').']'); ?>
 					</div>
 				</div>
 			<?php } ?>
@@ -16,7 +16,7 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 				<div class="footer-area pt-80 pb-45">
 					<div class="container">
 						<div class="row">
-							<?php if(get_theme_mod('Fassbender_footer_column') == '3columns'){ ?>
+							<?php if(get_theme_mod('medibazar_footer_column') == '3columns'){ ?>
 								<div class="col-xl-4 col-lg-4 col-md-4">
 									<?php dynamic_sidebar( 'footer-1' ); ?>
 								</div>
@@ -26,7 +26,7 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 								<div class="col-xl-4 col-lg-4 col-md-4">
 									<?php dynamic_sidebar( 'footer-3' ); ?>
 								</div>
-							<?php } elseif(get_theme_mod('Fassbender_footer_column') == '4columns'){ ?>	
+							<?php } elseif(get_theme_mod('medibazar_footer_column') == '4columns'){ ?>	
 								<div class="col-xl-3 col-lg-3 col-md-6">
 									<?php dynamic_sidebar( 'footer-1' ); ?>
 								</div>
@@ -66,16 +66,16 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 						<div class="row">
 							<div class="col-xl-6 col-lg-6 col-md-6">
 								<div class="copyright">
-									<?php if(get_theme_mod( 'Fassbender_copyright' )){ ?>
-										<p><?php echo Fassbender_sanitize_data(get_theme_mod( 'Fassbender_copyright' )); ?></p>
+									<?php if(get_theme_mod( 'medibazar_copyright' )){ ?>
+										<p><?php echo medibazar_sanitize_data(get_theme_mod( 'medibazar_copyright' )); ?></p>
 									<?php } else { ?>
-										<p><?php esc_html_e('Copyright 2021.KlbTheme . All rights reserved','Fassbender'); ?></p>
+										<p><?php esc_html_e('Copyright 2021.KlbTheme . All rights reserved','medibazar'); ?></p>
 									<?php } ?>
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6">
 								<div class="footer-bottom-link f-right">
-									<?php $sidebarmenu = get_theme_mod('Fassbender_footer_menu','0'); ?>
+									<?php $sidebarmenu = get_theme_mod('medibazar_footer_menu','0'); ?>
 									<?php if($sidebarmenu == '1'){ ?>
 										<?php 
 										   wp_nav_menu(array(
@@ -96,13 +96,13 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 				</div>
 			</footer>
 
-			<?php $mobilebottommenu = get_theme_mod('Fassbender_mobile_bottom_menu','0'); ?>
+			<?php $mobilebottommenu = get_theme_mod('medibazar_mobile_bottom_menu','0'); ?>
 			<?php if($mobilebottommenu == '1'){ ?>
-				<?php $edittoggle = get_theme_mod('Fassbender_mobile_bottom_menu_edit_toggle','0'); ?>
+				<?php $edittoggle = get_theme_mod('medibazar_mobile_bottom_menu_edit_toggle','0'); ?>
 				<?php if($edittoggle == '1'){ ?>
 				<div class="footer-fix-nav shadow">
 					<div class="row mx-0">
-						<?php $editrepeater = get_theme_mod('Fassbender_mobile_bottom_menu_edit'); ?>
+						<?php $editrepeater = get_theme_mod('medibazar_mobile_bottom_menu_edit'); ?>
 						
 						<?php foreach($editrepeater as $e){ ?>		
 							<?php if($e['mobile_menu_type'] == 'Home'){ ?>
@@ -120,7 +120,7 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 							<?php } elseif($e['mobile_menu_type'] == 'Cart'){ ?>
 								<div class="col">
 									<?php global $woocommerce; ?>
-									<a href="<?php echo esc_url(wc_get_cart_url()); ?>"><i class="fal fa-shopping-cart"></i><span class="cart-count count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'Fassbender'), $woocommerce->cart->cart_contents_count);?></a>
+									<a href="<?php echo esc_url(wc_get_cart_url()); ?>"><i class="fal fa-shopping-cart"></i><span class="cart-count count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'medibazar'), $woocommerce->cart->cart_contents_count);?></a>
 								</div>
 							<?php } elseif($e['mobile_menu_type'] == 'Myaccount'){ ?>	
 								<div class="col">
@@ -154,7 +154,7 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 						<?php } ?>
 						<div class="col">
 							<?php global $woocommerce; ?>
-							<a href="<?php echo esc_url(wc_get_cart_url()); ?>"><i class="fal fa-shopping-cart"></i><span class="cart-count count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'Fassbender'), $woocommerce->cart->cart_contents_count);?></a>
+							<a href="<?php echo esc_url(wc_get_cart_url()); ?>"><i class="fal fa-shopping-cart"></i><span class="cart-count count"><?php echo sprintf(_n('%d', '%d', $woocommerce->cart->cart_contents_count, 'medibazar'), $woocommerce->cart->cart_contents_count);?></a>
 						</div>
 						<div class="col">
 							<a href="<?php echo wc_get_page_permalink( 'myaccount' ); ?>"><i class="fal fa-user-circle"></i></a>
@@ -167,4 +167,4 @@ if ( ! function_exists( 'Fassbender_main_footer_function' ) ) {
 	<?php }
 }
 
-add_action('Fassbender_main_footer','Fassbender_main_footer_function', 10);
+add_action('medibazar_main_footer','medibazar_main_footer_function', 10);

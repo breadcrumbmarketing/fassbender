@@ -66,7 +66,7 @@ jQuery(document).ready(function($) {
 			
 			$('.input-text.qty').closest('.ajax_quick_view').find( '.input-text.qty' ).val($('.input-text.qty').closest('.ajax_quick_view').find( '.input-text.qty' ).attr('min'));
   
-			$( document.body ).trigger( 'FassbenderSinglePageInit' );
+			$( document.body ).trigger( 'medibazarSinglePageInit' );
 			
 			
 			$(".loader-image").remove();

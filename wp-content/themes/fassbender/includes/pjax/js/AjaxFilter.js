@@ -1,10 +1,10 @@
 (function($) {
 
-	FassbenderThemeModule.ajaxLinks = '.widget_klb_product_categories a, .widget_product_status a, .remove-filter a, .widget_layered_nav a, .klbgridlist a, .woocommerce-pagination a';
+	medibazarThemeModule.ajaxLinks = '.widget_klb_product_categories a, .widget_product_status a, .remove-filter a, .widget_layered_nav a, .klbgridlist a, .woocommerce-pagination a';
 
-	FassbenderThemeModule.ajaxFilters = function() {
+	medibazarThemeModule.ajaxFilters = function() {
 
-		FassbenderThemeModule.$document.pjax(FassbenderThemeModule.ajaxLinks, 'main', {
+		medibazarThemeModule.$document.pjax(medibazarThemeModule.ajaxLinks, 'main', {
 			timeout       : 5000,
 			scrollTo      : false,
 			renderCallback: function(context, html, afterRender) {
@@ -13,18 +13,18 @@
 			}
 		});
 
-		FassbenderThemeModule.$document.on('submit', '.widget_price_filter form', function(event) {
+		medibazarThemeModule.$document.on('submit', '.widget_price_filter form', function(event) {
 			$.pjax.submit(event, 'main');
-			FassbenderThemeModule.$document.trigger('FassbenderShopPageInit');
+			medibazarThemeModule.$document.trigger('medibazarShopPageInit');
 		});
 
 
 
-		FassbenderThemeModule.$document.on('pjax:error', function(xhr, textStatus, error) {
+		medibazarThemeModule.$document.on('pjax:error', function(xhr, textStatus, error) {
 			console.log('pjax error ' + error);
 		});
 
-		FassbenderThemeModule.$document.on('pjax:start', function() {
+		medibazarThemeModule.$document.on('pjax:start', function() {
 
 			scrollToTop(false);
 
@@ -36,13 +36,13 @@
 			$('.product-tab-content').before('<svg class="loader-image preloader" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>');
 		});
 
-		FassbenderThemeModule.$document.on('pjax:complete', function() {
+		medibazarThemeModule.$document.on('pjax:complete', function() {
 
 			$('main').removeClass('ajax-loading');
 
 			$('.loader-image.preloader').remove();
 			
-			FassbenderThemeModule.$document.trigger('FassbenderShopPageInit');
+			medibazarThemeModule.$document.trigger('medibazarShopPageInit');
 			
 			$('.site-overlay').removeClass('active');
 			$(".site-overlay").css({"opacity": "0", "visibility": "hidden"});
@@ -50,7 +50,7 @@
 		});
 
 
-		FassbenderThemeModule.$document.on('pjax:end', function() {
+		medibazarThemeModule.$document.on('pjax:end', function() {
 
 			scrollToTop(false);
 
@@ -62,12 +62,12 @@
 		});
 
 		var scrollToTop = function(type) {
-			if (Fassbender_settings.ajax_scroll === 'no' && type === false) {
+			if (medibazar_settings.ajax_scroll === 'no' && type === false) {
 				return false;
 			}
 
-			var $scrollTo = $(Fassbender_settings.ajax_scroll_class),
-			    scrollTo  = $scrollTo.offset().top - Fassbender_settings.ajax_scroll_offset;
+			var $scrollTo = $(medibazar_settings.ajax_scroll_class),
+			    scrollTo  = $scrollTo.offset().top - medibazar_settings.ajax_scroll_offset;
 
 			$('html, body').stop().animate({
 				scrollTop: scrollTo
@@ -76,6 +76,6 @@
 	};
 
 	$(document).ready(function() {
-		FassbenderThemeModule.ajaxFilters();
+		medibazarThemeModule.ajaxFilters();
 	});
 })(jQuery);

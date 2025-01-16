@@ -49,10 +49,10 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 							<div class="col-md-4">
 								<div class="image">
 									<?php if ( empty( $product_permalink ) ) : ?>
-										<?php echo Fassbender_sanitize_data($thumbnail); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+										<?php echo medibazar_sanitize_data($thumbnail); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 									<?php else : ?>
 										<a href="<?php echo esc_url( $product_permalink ); ?>">
-											<?php echo Fassbender_sanitize_data($thumbnail); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+											<?php echo medibazar_sanitize_data($thumbnail); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 										</a>
 									<?php endif; ?>
 								</div>
@@ -71,12 +71,12 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 										'<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s" data-success_message="%s"><i class="fal fa-trash"></i></a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										/* translators: %s is the product name */
-										esc_attr( sprintf( __( 'Remove %s from cart', 'Fassbender' ), wp_strip_all_tags( $product_name ) ) ),
+										esc_attr( sprintf( __( 'Remove %s from cart', 'medibazar' ), wp_strip_all_tags( $product_name ) ) ),
 										esc_attr( $product_id ),
 										esc_attr( $cart_item_key ),
 										esc_attr( $_product->get_sku() ),
 										/* translators: %s is the product name */
-										esc_attr( sprintf( __( '&ldquo;%s&rdquo; has been removed from your cart', 'Fassbender' ), wp_strip_all_tags( $product_name ) ) )
+										esc_attr( sprintf( __( '&ldquo;%s&rdquo; has been removed from your cart', 'medibazar' ), wp_strip_all_tags( $product_name ) ) )
 									),
 									$cart_item_key
 								);
@@ -120,7 +120,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 	</div>
 <?php else : ?>
 
-	<p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'Fassbender' ); ?></p>
+	<p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'medibazar' ); ?></p>
 
 <?php endif; ?>
 
