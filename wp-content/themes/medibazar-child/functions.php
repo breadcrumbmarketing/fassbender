@@ -53,6 +53,15 @@ function custom_woocommerce_catalog_orderby_german($orderby) {
 
 // Translate woocommerce 
 
+add_filter('gettext', 'debug_text_domain', 20, 3);
+function debug_text_domain($translated_text, $text, $domain) {
+    if ($text === 'Coupon code' || $text === 'APPLY COUPON') {
+        error_log("Text: $text, Domain: $domain");
+    }
+    return $translated_text;
+}
+
+
 add_filter('gettext', 'custom_german_translations', 20, 3);
 function custom_german_translations($translated_text, $text, $domain) {
     // Apply translations for specific text domains
