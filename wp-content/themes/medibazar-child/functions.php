@@ -124,3 +124,52 @@ function custom_german_translations($translated_text, $text, $domain) {
     return $translated_text;
 }
 
+// Traslate carts
+
+add_filter('gettext', 'custom_german_cart_translations', 20, 3);
+function custom_german_cart_translations($translated_text, $text, $domain) {
+    // Apply translations for WooCommerce text domain
+    if ($domain === 'woocommerce') {
+        switch ($text) {
+            // Cart page strings
+            case 'Product':
+                $translated_text = __('Produkt', 'woocommerce');
+                break;
+            case 'Price':
+                $translated_text = __('Preis', 'woocommerce');
+                break;
+            case 'Quantity':
+                $translated_text = __('Menge', 'woocommerce');
+                break;
+            case 'Subtotal':
+                $translated_text = __('Zwischensumme', 'woocommerce');
+                break;
+            case 'Remove this item':
+                $translated_text = __('Dieses Produkt entfernen', 'woocommerce');
+                break;
+            case 'Update cart':
+                $translated_text = __('Warenkorb aktualisieren', 'woocommerce');
+                break;
+            case 'Cart totals':
+                $translated_text = __('Warenkorb Summe', 'woocommerce');
+                break;
+            case 'Proceed to checkout':
+                $translated_text = __('Zur Kasse gehen', 'woocommerce');
+                break;
+            case 'Coupon code':
+                $translated_text = __('Gutscheincode', 'woocommerce');
+                break;
+            case 'Apply coupon':
+                $translated_text = __('Gutschein anwenden', 'woocommerce');
+                break;
+            case 'Your cart is currently empty.':
+                $translated_text = __('Ihr Warenkorb ist derzeit leer.', 'woocommerce');
+                break;
+            case 'Return to shop':
+                $translated_text = __('Zurück zum Shop', 'woocommerce');
+                break;
+            // Add more cart translations as needed
+        }
+    }
+    return $translated_text;
+}
