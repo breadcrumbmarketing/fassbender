@@ -70,10 +70,13 @@ function create_woocommerce_products_from_db() {
         $existing_product = get_page_by_title($row->name, OBJECT, 'product');
 
         if (!$existing_product) {
+            // Remove HTML tags from description
+            $plain_description = strip_tags($row->description_long);
+
             // Create product if it doesn't exist
             $product_data = [
                 'post_title' => $row->name,
-                'post_content' => $row->description_long,
+                'post_content' => $plain_description,
                 'post_status' => 'publish',
                 'post_type' => 'product',
             ];
