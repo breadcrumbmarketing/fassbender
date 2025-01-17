@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Shipping': 'Versand',
         'Description': 'Beschreibung',
         'Reviews': 'Bewertungen',
-        'In stock': 'Auf Lager',
+        'In Stock': 'Auf Lager',
         'Out of stock': 'Nicht vorrätig',
         'Remove this item': 'Dieses Produkt entfernen',
         'Your cart is currently empty.': 'Ihr Warenkorb ist derzeit leer.',

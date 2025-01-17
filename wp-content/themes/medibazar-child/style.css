@@ -8,3 +8,203 @@
 
 
 
+/* Sort of additionally section in product */
+.woocommerce_single_product_summary p {
+    margin-bottom: 10px;  /* adjust the spacing as needed */
+}
+
+/* Specifically targeting each type for further customization if needed */
+.woocommerce_single_product_summary .tax-info {
+    margin-bottom: 5px;  /* smaller spacing after tax info */
+    padding-top: -10px;
+}
+
+.woocommerce_single_product_summary .lieferzeit {
+    margin-bottom: 15px;  /* more spacing after delivery time */
+}
+
+.woocommerce_single_product_summary .stock-info {
+    margin-bottom: 20px;  /* more spacing after stock info */
+}
+
+
+
+/* Style for delivery time */
+p.lieferzeit {
+    font-size: 14px;
+    color: #dbdbdb;
+    margin: 10px 0;
+    background-color: #000000;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+/* Style for tax information */
+p.tax-info {
+    font-size: 14px;
+    color: #000000;
+    margin: 10px 0;
+ 
+    margin-top: -15px;
+}
+ 
+
+.stock-info .stock-circle {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    background-color: green;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.stock-info {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.woocommerce-Price-amount.amount {
+font-size: 2rem !important;
+font-weight:700 !important;
+}
+
+.product_title.entry-title {
+    width: auto !important;
+     
+
+}
+
+.tax-info a {
+    color: #4e97fd !important;
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+
+/* variation for additionaly information  */
+
+.product-property {
+    margin-bottom: 15px;
+}
+
+.product-property label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-property select {
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.product-properties {
+    margin-top: 20px;
+}
+
+.product-property {
+    margin-bottom: 15px;
+}
+
+.product-property label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.product-property select {
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.stock-info .stock-circle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    background-color: green;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+
+/* additionally information section */
+
+.product-additional-info {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.additional-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.additional-info-table th {
+    text-align: left;
+    width: 30%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.additional-info-table td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.additional-info-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* Style the custom tab */
+.woocommerce-tabs .additional-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.woocommerce-tabs .additional-info-table th,
+.woocommerce-tabs .additional-info-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.woocommerce-tabs .additional-info-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+ 
+/* Flexbox layout for WooCommerce tabs */
+.woocommerce-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px; /* Space between sections */
+}
+
+/* Style for each tab panel */
+.woocommerce-tabs .panel {
+    flex: 1; /* Allow sections to grow and fill available space */
+    min-width: 300px; /* Minimum width for each section */
+}
+
+/* Stack sections vertically on smaller screens */
+@media (max-width: 768px) {
+    .woocommerce-tabs {
+        flex-direction: column; /* Stack vertically */
+    }
+}

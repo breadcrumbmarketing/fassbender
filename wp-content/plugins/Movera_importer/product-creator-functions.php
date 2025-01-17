@@ -36,15 +36,12 @@ if (!function_exists('create_woocommerce_products_from_db')) {
             // Decode HTML entities and remove HTML tags from the description
             $cleaned_description = wp_strip_all_tags(html_entity_decode($row->description_long));
 
-            // Debug: Output the cleaned description
-            error_log("Cleaned Description for Product '{$row->name}': " . $cleaned_description);
-
             if ($existing_product_id) {
                 // Update existing product
                 $product_data = [
                     'ID'           => $existing_product_id,
                     'post_title'   => $row->name,
-                    'post_content' => $cleaned_description, // Use cleaned description
+                    'post_content' => $cleaned_description,
                     'post_status'  => 'publish',
                 ];
 
@@ -57,22 +54,67 @@ if (!function_exists('create_woocommerce_products_from_db')) {
                     update_post_meta($product_id, '_price', $row->VK);
                     update_post_meta($product_id, '_stock', $row->lagerbestand);
                     update_post_meta($product_id, '_sku', $row->suppliernumber);
-                    update_post_meta($product_id, '_mainnumber', $row->mainnumber); // Update mainnumber meta
+                    update_post_meta($product_id, '_mainnumber', $row->mainnumber);
+                    update_post_meta($product_id, '_stock_info', "Noch " . $row->lagerbestand . " Artikel ONLINE vorrätig");
 
-                    // Download and attach images from the database
-                    if (!empty($row->imageURL)) {
-                        download_and_attach_images($row->imageURL, $product_id);
+                    // Add delivery time
+                    if (!empty($row->lieferzeit)) {
+                        update_post_meta($product_id, '_lieferzeit', $row->lieferzeit);
+                        error_log("Delivery time updated for product '{$row->name}' (ID: {$product_id}): {$row->lieferzeit}");
                     }
 
-                    echo "<p>Product '{$row->name}' (Mainnumber: {$row->mainnumber}) updated successfully.</p>";
-                } else {
-                    echo "<p>Failed to update product '{$row->name}'.</p>";
+                    // Add tax information
+                    if (!empty($row->tax)) {
+                        $tax_message = sprintf(
+                            'Enthält %d%% MwSt. zzgl. <a href="/versand-lieferung/" style="color: blue; text-decoration: none;">Versand</a>',
+                            $row->tax
+                        );
+                        update_post_meta($product_id, '_tax_info', $tax_message);
+                    }
+
+                    // Add property values
+                    if (!empty($row->propertyValueName)) {
+                        update_post_meta($product_id, '_propertyValueName', $row->propertyValueName);
+                        error_log("Property Value updated for product '{$row->name}' (ID: {$product_id}): {$row->propertyValueName}");
+                    }
+
+                    // Add additional fields for "Zusätzliche Informationen"
+                    if (!empty($row->VariantDescription)) {
+                        update_post_meta($product_id, '_VariantDescription', $row->VariantDescription);
+                    }
+                    if (!empty($row->weight)) {
+                        update_post_meta($product_id, '_weight', $row->weight);
+                    }
+                    if (!empty($row->configuratorOptions)) {
+                        update_post_meta($product_id, '_configuratorOptions', $row->configuratorOptions);
+                    }
+                    if (!empty($row->propertyValueName_5)) {
+                        update_post_meta($product_id, '_propertyValueName_5', $row->propertyValueName_5);
+                    }
+                    if (!empty($row->ghsSignalWord)) {
+                        update_post_meta($product_id, '_ghsSignalWord', $row->ghsSignalWord);
+                    }
+                    if (!empty($row->EnergieLabel)) {
+                        update_post_meta($product_id, '_EnergieLabel', $row->EnergieLabel);
+                    }
+                    if (!empty($row->energyLabelColour)) {
+                        update_post_meta($product_id, '_energyLabelColour', $row->energyLabelColour);
+                    }
+                    if (!empty($row->accessory)) {
+                        update_post_meta($product_id, '_accessory', $row->accessory);
+                    }
+
+                    // Download and attach images
+                    if (!empty($row->imageURL)) {
+                        download_and_attach_images($row->imageURL, $product_id);
+                        error_log("Images processed for product '{$row->name}' (ID: {$product_id}).");
+                    }
                 }
             } else {
                 // Create new product
                 $product_data = [
                     'post_title'   => $row->name,
-                    'post_content' => $cleaned_description, // Use cleaned description
+                    'post_content' => $cleaned_description,
                     'post_status'  => 'publish',
                     'post_type'    => 'product',
                 ];
@@ -86,19 +128,63 @@ if (!function_exists('create_woocommerce_products_from_db')) {
                     update_post_meta($product_id, '_price', $row->VK);
                     update_post_meta($product_id, '_stock', $row->lagerbestand);
                     update_post_meta($product_id, '_sku', $row->suppliernumber);
-                    update_post_meta($product_id, '_mainnumber', $row->mainnumber); // Save mainnumber meta
+                    update_post_meta($product_id, '_mainnumber', $row->mainnumber);
+                    update_post_meta($product_id, '_stock_info', "Noch " . $row->lagerbestand . " Artikel ONLINE vorrätig");
 
-                    // Download and attach images from the database
+                    // Add delivery time
+                    if (!empty($row->lieferzeit)) {
+                        update_post_meta($product_id, '_lieferzeit', $row->lieferzeit);
+                    }
+
+                    // Add tax information
+                    if (!empty($row->tax)) {
+                        $tax_message = sprintf(
+                            'Enthält %d%% MwSt. zzgl. <a href="/versand-lieferung/" style="color: blue; text-decoration: none;">Versand</a>',
+                            $row->tax
+                        );
+                        update_post_meta($product_id, '_tax_info', $tax_message);
+                    }
+
+                    // Add property values
+                    if (!empty($row->propertyValueName)) {
+                        update_post_meta($product_id, '_propertyValueName', $row->propertyValueName);
+                        error_log("Property Value updated for product '{$row->name}' (ID: {$product_id}): {$row->propertyValueName}");
+                    }
+
+                    // Add additional fields for "Zusätzliche Informationen"
+                    if (!empty($row->VariantDescription)) {
+                        update_post_meta($product_id, '_VariantDescription', $row->VariantDescription);
+                    }
+                    if (!empty($row->weight)) {
+                        update_post_meta($product_id, '_weight', $row->weight);
+                    }
+                    if (!empty($row->configuratorOptions)) {
+                        update_post_meta($product_id, '_configuratorOptions', $row->configuratorOptions);
+                    }
+                    if (!empty($row->propertyValueName_5)) {
+                        update_post_meta($product_id, '_propertyValueName_5', $row->propertyValueName_5);
+                    }
+                    if (!empty($row->ghsSignalWord)) {
+                        update_post_meta($product_id, '_ghsSignalWord', $row->ghsSignalWord);
+                    }
+                    if (!empty($row->EnergieLabel)) {
+                        update_post_meta($product_id, '_EnergieLabel', $row->EnergieLabel);
+                    }
+                    if (!empty($row->energyLabelColour)) {
+                        update_post_meta($product_id, '_energyLabelColour', $row->energyLabelColour);
+                    }
+                    if (!empty($row->accessory)) {
+                        update_post_meta($product_id, '_accessory', $row->accessory);
+                    }
+
+                    // Download and attach images
                     if (!empty($row->imageURL)) {
                         download_and_attach_images($row->imageURL, $product_id);
                     }
-
-                    echo "<p>Product '{$row->name}' (Mainnumber: {$row->mainnumber}) created successfully with ID {$product_id}.</p>";
-                } else {
-                    echo "<p>Failed to create product '{$row->name}'.</p>";
                 }
             }
         }
     }
 }
+
 ?>

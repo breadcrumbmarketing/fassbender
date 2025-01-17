@@ -184,4 +184,119 @@ function custom_german_cart_translations($translated_text, $text, $domain) {
 }
 
 
+// Add action to display custom product meta in WooCommerce single product summary
+add_action('woocommerce_single_product_summary', 'display_custom_product_meta', 25);
 
+function display_custom_product_meta() {
+    global $product;
+
+    // Get the product ID
+    $product_id = $product->get_id();
+
+    // Display tax information
+    $tax_info = get_post_meta($product_id, '_tax_info', true);
+    if (!empty($tax_info)) {
+        echo '<p class="tax-info">' . wp_kses_post($tax_info) . '</p>';
+    }
+
+    // Display delivery time
+    $lieferzeit = get_post_meta($product_id, '_lieferzeit', true);
+    if (!empty($lieferzeit)) {
+        echo '<p class="lieferzeit"><strong>Lieferzeit:</strong> ' . esc_html($lieferzeit) . '</p>';
+    }
+
+    // Display stock information with spacing above
+    $stock_info = get_post_meta($product_id, '_stock_info', true);
+    if (!empty($stock_info)) {
+        echo '<p class="stock-info"><span class="stock-circle"></span>' . wp_kses_post($stock_info) . '</p>';
+    }
+
+    // Display property values
+    $property_value_name = get_post_meta($product_id, '_property_value_name', true);
+    if (!empty($property_value_name)) {
+        // Split the value into individual properties
+        $properties = explode('|', $property_value_name);
+
+        echo '<div class="product-properties">';
+        foreach ($properties as $property) {
+            // Split title and items by the first colon
+            $parts = explode(':', $property, 2);
+            $title = trim($parts[0]);
+            $items = isset($parts[1]) ? array_map('trim', explode(',', $parts[1])) : [];
+
+            // If there's only one item, display it as static text
+            if (count($items) === 1) {
+                echo '<p class="product-property"><strong>' . esc_html($title) . ':</strong> ' . esc_html($items[0]) . '</p>';
+            } elseif (count($items) > 1) {
+                // Display a dropdown for multiple items
+                echo '<div class="product-property">';
+                echo '<label for="property-' . sanitize_title($title) . '"><strong>' . esc_html($title) . ':</strong></label>';
+                echo '<select id="property-' . sanitize_title($title) . '" name="property-' . sanitize_title($title) . '">';
+                foreach ($items as $item) {
+                    echo '<option value="' . esc_attr($item) . '">' . esc_html($item) . '</option>';
+                }
+                echo '</select>';
+                echo '</div>';
+            }
+        }
+        echo '</div>';
+    }
+}
+
+// Add the "Zusätzliche Informationen" tab to the product page
+add_filter('woocommerce_product_tabs', 'add_additional_information_tab');
+
+function add_additional_information_tab($tabs) {
+    // Add the new tab
+    $tabs['additional_information_tab'] = [
+        'title'    => __('Zusätzliche Informationen', 'woocommerce'), // Tab title
+        'priority' => 20, // Position of the tab (20 is between Beschreibung and Bewertungen)
+        'callback' => 'display_additional_information_tab_content', // Callback function to display content
+    ];
+    return $tabs;
+}
+
+// Callback function to display content in the "Zusätzliche Informationen" tab
+function display_additional_information_tab_content() {
+    global $product;
+
+    // Get the product ID
+    $product_id = $product->get_id();
+
+    // Get the weight from product meta
+    $weight = get_post_meta($product_id, '_weight', true);
+
+    // Debug: Log the retrieved weight
+    error_log("Retrieved weight for product ID {$product_id}: " . ($weight ? $weight : 'Empty'));
+
+    // Display the weight if it exists
+    if (!empty($weight)) {
+        echo '<div class="product-additional-info">';
+        echo '<table class="shop_table shop_table_responsive additional-info-table">';
+        echo '<tr>';
+        echo '<th>' . esc_html__('Gewicht', 'woocommerce') . '</th>';
+        echo '<td>' . esc_html($weight) . ' kg</td>';
+        echo '</tr>';
+        echo '</table>';
+        echo '</div>';
+    } else {
+        echo '<p>' . esc_html__('Keine zusätzlichen Informationen verfügbar.', 'woocommerce') . '</p>';
+    }
+
+}
+
+// Remove the Reviews tab
+add_filter('woocommerce_product_tabs', 'remove_reviews_tab', 98);
+
+function remove_reviews_tab($tabs) {
+    unset($tabs['reviews']); // Remove the reviews tab
+    return $tabs;
+}
+
+// Remove WooCommerce's default "Additional Information" tab
+add_filter('woocommerce_product_tabs', 'remove_default_additional_information_tab', 98);
+
+function remove_default_additional_information_tab($tabs) {
+    unset($tabs['additional_information']); // Remove the default additional information tab
+    return $tabs;
+}
