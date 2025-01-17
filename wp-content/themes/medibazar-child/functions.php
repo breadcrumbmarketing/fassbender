@@ -182,3 +182,6 @@ function custom_german_cart_translations($translated_text, $text, $domain) {
     }
     return $translated_text;
 }
+
+
+
