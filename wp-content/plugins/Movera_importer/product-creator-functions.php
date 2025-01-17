@@ -33,8 +33,8 @@ if (!function_exists('create_woocommerce_products_from_db')) {
                 )
             );
 
-            // Decode HTML entities and remove HTML tags from the description
-            $cleaned_description = wp_strip_all_tags(html_entity_decode($row->description_long));
+            // Decode HTML entities and preserve safe HTML tags in the description
+            $cleaned_description = wp_kses_post(html_entity_decode($row->description_long));
 
             if ($existing_product_id) {
                 // Update existing product
@@ -186,5 +186,4 @@ if (!function_exists('create_woocommerce_products_from_db')) {
         }
     }
 }
-
 ?>
