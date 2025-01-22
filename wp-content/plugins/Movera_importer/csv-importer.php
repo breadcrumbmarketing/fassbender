@@ -3,7 +3,7 @@
 Plugin Name: CSV Importer to wp_movera
 Description: Imports CSV files into wp_movera table and creates WooCommerce products.
 Version: 1.0
-Author: Your Name
+Author: Hamy Vosugh
 */
 
 ini_set('memory_limit', '512M'); // Increase memory limit to 512MB
@@ -73,4 +73,6 @@ function csv_importer_create_products_page() {
         create_woocommerce_products_from_db();
     }
 }
+
+
 ?>
